@@ -606,7 +606,99 @@
             }
             void DisplayCustomerPurchaseManagement()
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *        Menu of Purchase Management       *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Modify Customer Purrchase");
+                Console.WriteLine(" 2. Link Purchases to Customers and Products");
+                Console.WriteLine(" 3. View customer Purchase History");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
 
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            ModifyCustomerPurchase();
+                            break;
+                        case 2:
+                            // Link purchase to Customer and Products.
+                            break;
+                        case 3:
+                            // View Customer Purchase history.
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
+            }
+            void ModifyCustomerPurchase()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *  Menu of Customer Purchase Modification  *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Add the Customer Purchase");
+                Console.WriteLine(" 2. Update the Customer Purchase");
+                Console.WriteLine(" 3. Delete the Customer Purchase");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            // Add the Customer Purchase
+                            break;
+                        case 2:
+                            // Update the Customer Purchase
+                            break;
+                        case 3:
+                            // Delete the Customer Purchase
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
             }
             void DisplayTransactionManagement()
             {
