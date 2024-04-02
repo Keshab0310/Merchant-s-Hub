@@ -117,29 +117,498 @@
             }
             void DisplayMenuOfCustomerMangement()
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *        Menu of Customer Modification     *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Add the Costomer");
+                Console.WriteLine(" 2. Update the Costomer");
+                Console.WriteLine(" 3. Delete the costomer");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
 
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            // Add the costomer
+                            break;
+                        case 2:
+                            // Update the costomer
+                            break;
+                        case 3:
+                            // Delete the costomer
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
+            }
+            void ModifyCustomer()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *        Menu of Customer Modification     *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Add the Costomer");
+                Console.WriteLine(" 2. Update the Costomer");
+                Console.WriteLine(" 3. Delete the costomer");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            // Add the costomer
+                            break;
+                        case 2:
+                            // Update the costomer
+                            break;
+                        case 3:
+                            // Delete the costomer
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
             }
             void DisplayMenuOfMerchantMangement()
             {
+                void ModifyCustomer()
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(" ******************************************");
+                    Console.WriteLine(" *                                          *");
+                    Console.WriteLine(" *        Menu of Customer Modification     *");
+                    Console.WriteLine(" *                                          *");
+                    Console.WriteLine(" ******************************************");
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.WriteLine();
+                    Console.WriteLine("Please choose from the following Options:");
+                    Console.WriteLine();
+                    Console.WriteLine(" 1. Add the Costomer");
+                    Console.WriteLine(" 2. Update the Costomer");
+                    Console.WriteLine(" 3. Delete the costomer");
+                    Console.WriteLine();
+                    Console.Write("Enter your choice: ");
 
+                    try
+                    {
+                        int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                        switch (subChoice)
+                        {
+                            case 1:
+                                // Add the costomer
+                                break;
+                            case 2:
+                                // Update the costomer
+                                break;
+                            case 3:
+                                // Delete the costomer
+                                break;
+                            default:
+                                Console.WriteLine("Invalid choice. Please try again.");
+                                break;
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a number.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                    }
+                }
             }
+            void ModifyMerchant()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *        Menu of Merchant Modification     *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Add the Merchant");
+                Console.WriteLine(" 2. Update the Merchant");
+                Console.WriteLine(" 3. Delete the Merchant");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            // Add the Merchant
+                            break;
+                        case 2:
+                            // Update the Merchant
+                            break;
+                        case 3:
+                            // Delete the Merchant
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
+            }
+
             void DisplayMenuofCustomerTypeManagement()
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *    Menu of Customer Type Management      *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Modify the Customer Type");
+                Console.WriteLine(" 2. View Customer type details");
+                Console.WriteLine(" 3. Assign or change Customer tye for Customers");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
 
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            ModifyCustomerType();
+                            break;
+                        case 2:
+                            // View and the costomer details.
+                            break;
+                        case 3:
+                            // Assign or change customer types for customers
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
+            }
+            void ModifyCustomerType()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *    Menu of Customer Type Modification    *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Add the Customer Type");
+                Console.WriteLine(" 2. Update the Customer Type");
+                Console.WriteLine(" 3. Delete the Customer Type");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            // Add the Customer Type
+                            break;
+                        case 2:
+                            // Update the Customer Type
+                            break;
+                        case 3:
+                            // Delete the Customer Type
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
             }
             void DisplayofAccountManagement()
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *        Menu of Account Management        *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Modify the Accounts");
+                Console.WriteLine(" 2. View Costomer type details");
+                Console.WriteLine(" 3. Link Account to customers");
+                Console.WriteLine(" 4. Assign or change customer type for customers");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
 
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            ModifyAccount();
+                            break;
+                        case 2:
+                            // View and the Accounts details.
+                            break;
+                        case 3:
+                            // Link Account to customers
+                            break;
+                        case 4:
+                            // Assign or change Account types.
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
             }
-            void DisplayProductandServiceManagement() 
-            { 
+            void ModifyAccount()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *        Menu of Account Modification      *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Add the Account");
+                Console.WriteLine(" 2. Update the Account");
+                Console.WriteLine(" 3. Delete the Account");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            // Add the Account
+                            break;
+                        case 2:
+                            // Update the Account
+                            break;
+                        case 3:
+                            // Delete the Account
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
+            }
+            void DisplayProductandServiceManagement()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *  Menu of Product and Service Management  *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Modify the Product and Service");
+                Console.WriteLine(" 2. View Product and Service details");
+                Console.WriteLine(" 3. Track quantities and other details");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            ModifyProductandServices();
+                            break;
+                        case 2:
+                            // View and the Product and Services
+                            break;
+                        case 3:
+                            // Assign or change Product and Services
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
+            }
+            void ModifyProductandServices()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *        Menu of Product and Services      *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Add the Product and Services ");
+                Console.WriteLine(" 2. Update the Product and Services ");
+                Console.WriteLine(" 3. Product and Services ");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            // Add the Product and Services 
+                            break;
+                        case 2:
+                            // Update the Product and Services 
+                            break;
+                        case 3:
+                            // Delete the Product and Services 
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
 
             }
             void DisplayCustomerPurchaseManagement()
             {
-                
+
             }
-            void DisplayTransactionManagement() 
+            void DisplayTransactionManagement()
             {
 
             }
