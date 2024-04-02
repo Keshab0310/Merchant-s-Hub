@@ -1,45 +1,15 @@
 ﻿# Merchant's Hub
- This C# console application appears to be a simple database management system for a customer-merchant relationship, including purchases, accounts, and transaction history. The database schema consists of several tables:
+ 
+ The name of this console app is mentioned in the title and its name is **Merchant's Hub.** This console app has 3 options in the front which include _Root of Merchant hub_, _Retrieving Data_, and _Exit_.
 
+ 
 
-## Customers
-Stores Customer Information
-    
-    Including their 
+##Root of Merchant Hub
 
-- Name 
--   Phone:
--   Email:
--   Others: 
+ 
 
-Customers are assigned a unique ID and can have a specific customer type (e.g., regular, premium, etc.) 
-## Merchants
+It displays the options that give access to the control of the database where we can add, update, or remove any data inside the database.
 
-Merchants contains information about the merchants,
-
-- Name:
-
-- Phone Number:
-
-- Email:
-
-- Others:
-
-Where, merchants also have a unique ID.
-## 💥 Group Project 
-Hello, World we are here for our Final Project of our Programming and Learning
-
-
-## 💥 A Passionate students of IOT
-
-## Done By
-
-This project is done by the following :
-
-- Robert Regmi
-- Keshap. kumar pathak
-- Anmol
-- Ridima
 
               
 ##     🧿🧿🧿🧿 Thank you 👋👋👋👋
