@@ -4,7 +4,7 @@
 
  
 
-##Root of Merchant Hub
+# Root of Merchant Hub
 
  
 
@@ -18,6 +18,8 @@ It displays the options that give access to the control of the database where we
 5.	 Product and Service Management
 6.	Purchase Management
 7.	Transaction Management
+
+
  ☝️☝️  The above Options have different sub-options where we can modify each option by adding, updating, or removing the data in each department.
 
 
@@ -26,7 +28,7 @@ It displays the options that give access to the control of the database where we
 Similarly, the second option is Retrieving data, here user can view and search for customer, merchant, and account information in the database. 
 🔏
 
-![MErchant's Hub]("C:\Users\ROBERT\Downloads\merchant.jpg")
+![Merchant's Hub]("C:\Users\ROBERT\Downloads\merchant.jpg")
 
               
 ##     🧿🧿🧿🧿 Thank you 👋👋👋👋
