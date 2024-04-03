@@ -213,8 +213,6 @@
             }
             void DisplayMenuOfMerchantMangement()
             {
-                void ModifyCustomer()
-                {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine(" ******************************************");
@@ -226,9 +224,9 @@
                     Console.WriteLine();
                     Console.WriteLine("Please choose from the following Options:");
                     Console.WriteLine();
-                    Console.WriteLine(" 1. Add the Costomer");
-                    Console.WriteLine(" 2. Update the Costomer");
-                    Console.WriteLine(" 3. Delete the costomer");
+                Console.WriteLine(" 1. Modify the Merchant");
+                Console.WriteLine(" 2. View Merchant details");
+                Console.WriteLine(" 3. Search for Merchant");
                     Console.WriteLine();
                     Console.Write("Enter your choice: ");
 
