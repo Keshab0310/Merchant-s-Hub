@@ -702,7 +702,99 @@
             }
             void DisplayTransactionManagement()
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *       Menu of Transaction Management     *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Modify the Transaction");
+                Console.WriteLine(" 2. Link Transaction to accounts");
+                Console.WriteLine(" 3. View Transaction history");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
 
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            ModifyTransaction();
+                            break;
+                        case 2:
+                            // View and the Accounts details.
+                            break;
+                        case 3:
+                            // Assign or change Account types.
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
+            }
+            void ModifyTransaction()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *      Menu of Transaction Modification    *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
+                Console.WriteLine(" 1. Add the Transaction");
+                Console.WriteLine(" 2. Update the Transaction");
+                Console.WriteLine(" 3. Delete the Transaction");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (subChoice)
+                    {
+                        case 1:
+                            // Add the Transaction
+                            break;
+                        case 2:
+                            // Update the Transaction
+                            break;
+                        case 3:
+                            // Delete the Transaction
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
             }
         }
         static void RetrivingData()
