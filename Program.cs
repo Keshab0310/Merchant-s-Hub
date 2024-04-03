@@ -128,9 +128,9 @@
                 Console.WriteLine();
                 Console.WriteLine("Please choose from the following Options:");
                 Console.WriteLine();
-                Console.WriteLine(" 1. Add the Costomer");
-                Console.WriteLine(" 2. Update the Costomer");
-                Console.WriteLine(" 3. Delete the costomer");
+                Console.WriteLine(" 1. Modifying the Costomer");
+                Console.WriteLine(" 2. View Custome Details");
+                Console.WriteLine(" 3. Search for Customers");
                 Console.WriteLine();
                 Console.Write("Enter your choice: ");
 
@@ -141,13 +141,13 @@
                     switch (subChoice)
                     {
                         case 1:
-                            // Add the costomer
+                            ModifyCustomer();
                             break;
                         case 2:
-                            // Update the costomer
+                            // View Customer Deetails
                             break;
                         case 3:
-                            // Delete the costomer
+                            SearchCustomer();
                             break;
                         default:
                             Console.WriteLine("Invalid choice. Please try again.");
@@ -163,15 +163,19 @@
                     Console.WriteLine($"An unexpected error occurred: {ex.Message}");
                 }
             }
+            void SearchCustomer()
+            {
+                // Code here to search for the customer
+            }
             void ModifyCustomer()
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" ********************************************");
                 Console.WriteLine(" *                                          *");
                 Console.WriteLine(" *        Menu of Customer Modification     *");
                 Console.WriteLine(" *                                          *");
-                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" ********************************************");
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine();
                 Console.WriteLine("Please choose from the following Options:");
@@ -213,53 +217,53 @@
             }
             void DisplayMenuOfMerchantMangement()
             {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine(" ******************************************");
-                    Console.WriteLine(" *                                          *");
-                    Console.WriteLine(" *        Menu of Customer Modification     *");
-                    Console.WriteLine(" *                                          *");
-                    Console.WriteLine(" ******************************************");
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.WriteLine();
-                    Console.WriteLine("Please choose from the following Options:");
-                    Console.WriteLine();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *         Menu of Merchant Management      *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine();
+                Console.WriteLine("Please choose from the following Options:");
+                Console.WriteLine();
                 Console.WriteLine(" 1. Modify the Merchant");
                 Console.WriteLine(" 2. View Merchant details");
                 Console.WriteLine(" 3. Search for Merchant");
-                    Console.WriteLine();
-                    Console.Write("Enter your choice: ");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
 
-                    try
-                    {
-                        int subChoice = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    int subChoice = Convert.ToInt32(Console.ReadLine());
 
-                        switch (subChoice)
-                        {
-                            case 1:
-                                // Add the costomer
-                                break;
-                            case 2:
-                                // Update the costomer
-                                break;
-                            case 3:
-                                // Delete the costomer
-                                break;
-                            default:
-                                Console.WriteLine("Invalid choice. Please try again.");
-                                break;
-                        }
-                    }
-                    catch (FormatException)
+                    switch (subChoice)
                     {
-                        Console.WriteLine("Invalid input. Please enter a number.");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                        case 1:
+                            ModifyMerchant();
+                            break;
+                        case 2:
+                            // View and the Merchant details.
+                            break;
+                        case 3:
+                            SearchMerchant();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
                     }
                 }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
             }
+
             void ModifyMerchant()
             {
                 Console.Clear();
@@ -309,6 +313,11 @@
                 }
             }
 
+            void SearchMerchant()
+            {
+                //code to search merchant
+            }
+
             void DisplayMenuofCustomerTypeManagement()
             {
                 Console.Clear();
@@ -324,7 +333,7 @@
                 Console.WriteLine();
                 Console.WriteLine(" 1. Modify the Customer Type");
                 Console.WriteLine(" 2. View Customer type details");
-                Console.WriteLine(" 3. Assign or change Customer tye for Customers");
+                Console.WriteLine(" 3. Assign or change Customer type for Customers");
                 Console.WriteLine();
                 Console.Write("Enter your choice: ");
 
