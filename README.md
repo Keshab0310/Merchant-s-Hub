@@ -1,7 +1,7 @@
 ﻿# Merchant's Hub
  
  The name of this console app is mentioned in the title and its name is **Merchant's Hub.** This console app has 3 options in the front which include _Root of Merchant hub_, _Retrieving Data_, and _Exit_.
-
+ 
  
 
 # Root of Merchant Hub
@@ -29,6 +29,19 @@ Similarly, the second option is Retrieving data, here user can view and search f
 🔏
 
 ![Merchant's Hub]("C:\Users\ROBERT\Downloads\merchant.jpg")
+There are only 3 options, they are:
+-Beginner Level Data
+-Intermediate Level Data
+-Advanced Layered Data
+In this model, I have only made 10 queries for each option, where the user can easily calculate the lists of any data without any errors and the user can be able to view the represented outputs too. This feature allows the user to effectively look out for data contained in the database.
+> Feature of Merchant’s Hubs Console app:
+This app is particularly beneficial in every way. But Data Auditing and Reporting can be the major feature of this app. My group as a whole is planning to make this app which provides more comprehensive auditing and Reporting capabilities while enabling the users to analyze trends, monitor performance, and make data-driven decisions
 
-              
+The Group members of Merchant's Hub Project is
+StudentNumber|Name
+
+A00295473|Keshab Kumar Pathak
+A00296100|Robert Regmi
+A00296804|Anmol Singh
+A00296804|Ridhima Ridhima
 ##     🧿🧿🧿🧿 Thank you 👋👋👋👋
