@@ -8,9 +8,10 @@ namespace Merchant_s_Hub
 {
     internal class Program
     {
-        static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
+        /*static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);*/
+        static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);
-
         static void Main(string[] args)
         {
 
@@ -137,11 +138,11 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ********************************************");
+            Console.WriteLine(" ******************************************");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" *    Welcome to Retriving Data Section     *");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ********************************************");
+            Console.WriteLine(" ******************************************");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("This is for looking all the data of the database. Here, you can get important information related to the database.");
             Console.WriteLine();
@@ -185,11 +186,11 @@ namespace Merchant_s_Hub
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" **************************************************");
+                Console.WriteLine(" ************************************************");
                 Console.WriteLine(" *                                                *");
                 Console.WriteLine(" *     Welcome to Beginner-Level Data Section     *");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" **************************************************");
+                Console.WriteLine(" ************************************************");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Here You can get the Beginner Level data or Simple data of the database.");
                 Console.WriteLine();
@@ -261,11 +262,11 @@ namespace Merchant_s_Hub
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" **************************************************");
+                Console.WriteLine(" ************************************************");
                 Console.WriteLine(" *                                                *");
                 Console.WriteLine(" *    Welcome to Intermediate-Level Data Section  *");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" **************************************************");
+                Console.WriteLine(" ************************************************");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Here You can get the Intermediate Level data or Medium level data of the database.");
                 Console.WriteLine();
@@ -337,11 +338,11 @@ namespace Merchant_s_Hub
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" **************************************************");
+                Console.WriteLine(" ************************************************");
                 Console.WriteLine(" *                                                *");
                 Console.WriteLine(" *      Welcome to Advanced-Level Data Section    *");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" **************************************************");
+                Console.WriteLine(" ************************************************");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Here You can get the Advanced Level data or complex data of the database.");
                 Console.WriteLine();
@@ -408,26 +409,28 @@ namespace Merchant_s_Hub
                 {
                     Console.WriteLine($"An unexpected error occurred: {ex.Message}");
                 }
-        }
-            
+            }
+
 
         }
         static void DisplayMenuOfCustomerMangement()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ********************************************");
+            Console.WriteLine(" ******************************************");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" *        Menu of Customer Modification     *");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ********************************************");
-            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine(" ******************************************");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
             Console.WriteLine();
             Console.WriteLine(" 1. Modifying the Costomer");
             Console.WriteLine(" 2. View Custome Details");
-            Console.WriteLine(" 3. Search for Customers");
+            Console.WriteLine(" 3. View Customer Types");
+            Console.WriteLine(" 4. Search for Customers by their types.");
+            Console.WriteLine(" 5. Go Back to Root of Database");
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -441,10 +444,16 @@ namespace Merchant_s_Hub
                         ModifyCustomer();
                         break;
                     case 2:
-                        DisplayCustomerDetails();
+                        ViewCustomers();
                         break;
                     case 3:
+                        SeeCustomerType();
+                        break;
+                    case 4:
                         SearchCustomer();
+                        break;
+                    case 5:
+                        DisplayofRootofDatabase();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -460,6 +469,156 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+        static void ModifyCustomer()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" *                                          *");
+            Console.WriteLine(" *        Menu of Customer Modification     *");
+            Console.WriteLine(" *                                          *");
+            Console.WriteLine(" ******************************************");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.WriteLine("Please choose from the following Options:");
+            Console.WriteLine();
+            Console.WriteLine(" 1. Add the Costomer");
+            Console.WriteLine(" 2. Update the Costomer");
+            Console.WriteLine(" 3. Delete the costomer");
+            Console.WriteLine();
+            Console.Write("Enter your choice: ");
+
+            try
+            {
+                int subChoice = Convert.ToInt32(Console.ReadLine());
+
+                switch (subChoice)
+                {
+                    case 1:
+                        AddCustomer();
+                        break;
+                    case 2:
+                        // Update the costomer
+                        break;
+                    case 3:
+                        deleteCustomer();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
+        }
+        static void AddCustomer()
+        {
+            ViewCustomers();
+
+            Console.Write("\n\tEnter the customer ID: ");
+            string Customer_Id = Console.ReadLine();
+
+            Console.Write("\n\tEnter the customer name: ");
+            string Customer_name = Console.ReadLine();
+
+            Console.Write("\n\tEnter the customer phone: ");
+            string Customer_phone = Console.ReadLine();
+
+            Console.Write("\n\tEnter the customer email: ");
+            string Customer_email = Console.ReadLine();
+
+            Console.Write("\n\tEnter the date became customer (yyyy-mm-dd): ");
+            string Date_became_customer = Console.ReadLine();
+
+
+            Console.Write("\n\tEnter the customer type code between (1-10): ");
+            if (!int.TryParse(Console.ReadLine(), out int Customer_Types_Code))
+            {
+                Console.WriteLine("Invalid Customer Type ID. Please enter a valid integer.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string insertQuery = $"Insert into customers (Customer_Id, Customer_name, Customer_phone, Customer_email, Date_became_customer, customer_types_code) values ('{Customer_Id}', '{Customer_name}', '{Customer_phone}', '{Customer_email}', '{Date_became_customer}', '{Customer_Types_Code}');";
+                    MySqlCommand command = new MySqlCommand(insertQuery, connection);
+                    connection.Open();
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("\n\tCustomer added successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\tFailed to add customer.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.ReadLine();
+
+            DisplayMenuOfCustomerMangement();
+        }
+        static void deleteCustomer()
+        {
+            Console.Write("Enter Customer ID to delete: ");
+            if (!int.TryParse(Console.ReadLine(), out int customer_ID))
+            {
+                Console.WriteLine("Invalid Customer ID. Please enter a valid integer.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string deleteQuery = $"DELETE FROM accounts WHERE customer_id = {customer_ID};DELETE FROM customers WHERE customer_id = {customer_ID}; ";
+                    MySqlCommand command = new MySqlCommand(deleteQuery, connection);
+                    command.Parameters.AddWithValue("@authorId", customer_ID);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Customer deleted successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to delete Customer. Customer ID not found.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            DisplayMenuOfCustomerMangement();
+            Console.ReadKey();
+        }
+        
         static void DisplayCustomerDetails()
         {
             string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
@@ -516,58 +675,6 @@ namespace Merchant_s_Hub
 
 
         }
-        static void SearchCustomer()
-        {
-            // Code here to search for the customer
-        }
-        static void ModifyCustomer()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ********************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Customer Modification     *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ********************************************");
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine();
-            Console.WriteLine("Please choose from the following Options:");
-            Console.WriteLine();
-            Console.WriteLine(" 1. Add the Costomer");
-            Console.WriteLine(" 2. Update the Costomer");
-            Console.WriteLine(" 3. Delete the costomer");
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
-            try
-            {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
-                switch (subChoice)
-                {
-                    case 1:
-                        // Add the costomer
-                        break;
-                    case 2:
-                        // Update the costomer
-                        break;
-                    case 3:
-                        // Delete the costomer
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a number.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
-        }
         static void DisplayMenuOfMerchantMangement()
         {
             Console.Clear();
@@ -616,7 +723,6 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
-
         static void ModifyMerchant()
         {
             Console.Clear();
