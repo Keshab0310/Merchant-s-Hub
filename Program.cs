@@ -12,8 +12,11 @@ namespace Merchant_s_Hub
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
         /*static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
+        /*static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);*/
+        static string connectionString = "server=localhost;port=3306;user=root;password=anmol@2023;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);
+
 
         static void Main(string[] args)
         {
@@ -802,7 +805,7 @@ namespace Merchant_s_Hub
                         ModifyMerchant();
                         break;
                     case 2:
-                        // View and the Merchant details.
+                        ViewMerchants();
                         break;
                     case 3:
                         SearchMerchant();
@@ -825,11 +828,11 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" *        Menu of Merchant Modification     *");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
@@ -837,6 +840,7 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Add the Merchant");
             Console.WriteLine(" 2. Update the Merchant");
             Console.WriteLine(" 3. Delete the Merchant");
+            Console.WriteLine(" 4. Go Back to Merchant Management");
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -847,13 +851,16 @@ namespace Merchant_s_Hub
                 switch (subChoice)
                 {
                     case 1:
-                        // Add the Merchant
+                        AddMerchant();
                         break;
                     case 2:
                         // Update the Merchant
                         break;
                     case 3:
-                        // Delete the Merchant
+                        deleteMerchant();
+                        break;
+                    case 4:
+                        DisplayMenuOfMerchantMangement();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -869,10 +876,191 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+        static void AddMerchant()
+        {
+            Console.Write("\n\tEnter the Merchant ID: ");
+            string merchant_id = Console.ReadLine();
 
+            Console.Write("\n\tEnter the merchant name: ");
+            string merchant_name = Console.ReadLine();
+
+            Console.Write("\n\tEnter the merchant phone: ");
+            string merchant_phone = Console.ReadLine();
+
+            Console.Write("\n\tEnter the merchant email: ");
+            string email = Console.ReadLine();
+
+            Console.Write("\n\tEnter Others details: ");
+            string other_details = Console.ReadLine();
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string insertQuery = $"Insert into merchants (merchant_id, merchant_name, merchant_phone, email, other_details) values ('{merchant_id}', '{merchant_name}', '{merchant_phone}', '{email}', '{other_details}')";
+                    MySqlCommand command = new MySqlCommand(insertQuery, connection);
+                    connection.Open();
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("\n\tMerchant added successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\tFailed to add merchant.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.ReadLine();
+
+            DisplayMenuOfMerchantMangement();
+        }
+        static void deleteMerchant()
+        {
+            Console.Write("Enter Merchant ID to delete: ");
+            if (!int.TryParse(Console.ReadLine(), out int Merchant_ID))
+            {
+                Console.WriteLine("Invalid Merchant ID. Please enter a valid integer.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string deleteQuery = $"DELETE FROM products_and_services WHERE Merchant_ID = '{Merchant_ID}';DELETE FROM Merchants WHERE Merchant_ID = '{Merchant_ID}'; ";
+                    MySqlCommand command = new MySqlCommand(deleteQuery, connection);
+                    command.Parameters.AddWithValue("@Merchant_ID", Merchant_ID);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Merchant deleted successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to delete Merchant. Merchant ID not found.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            DisplayMenuOfMerchantMangement();
+            Console.ReadKey();
+        }
         static void SearchMerchant()
         {
-            //code to search merchant
+            Console.Write("\n\tEnter the merchant ID: ");
+            string merchant_id = Console.ReadLine();
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string searchQuery = $"Select * From merchants where merchant_id = {merchant_id};";
+                    MySqlCommand command = new MySqlCommand(searchQuery, connection);
+                    connection.Open();
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        Console.WriteLine("\n\tMerchant Details:");
+                        Console.WriteLine("\t------------------");
+                        while (reader.Read())
+                        {
+                            Console.WriteLine($"\tMerchant ID: {reader["merchant_id"]}");
+                            Console.WriteLine($"\tMerchant Name: {reader["merchant_name"]}");
+                            Console.WriteLine($"\tMerchan Phone: {reader["merchant_phone"]}");
+                            Console.WriteLine($"\tMerchan Email: {reader["email"]}");
+                            Console.WriteLine($"\tOther details: {reader["other_details"]}");
+                            Console.WriteLine("\t------------------");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\tNo merchant found with the given name.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.ReadLine();
+            DisplayMenuOfMerchantMangement();
+
+        }
+        static void ViewMerchants()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectMerchant = @"SELECT
+                          Merchant_ID
+                        , Merchant_name
+                        , Merchant_Phone
+                        , Email
+                        , Other_details
+                    FROM
+
+                        Merchants;";
+                MySqlCommand command = new MySqlCommand(selectMerchant, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *         Merchant Details                 *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("MerchantID\tMerchant Name\t\tMerchant Phone\tMerchant Email\t\tOther Details\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"{reader["Merchant_ID"].ToString().PadRight(10)}\t{reader["Merchant_name"].ToString().PadRight(20)}\t{reader["Merchant_Phone"].ToString().PadRight(10)}\t{reader["Email"].ToString().PadRight(20)}\t{reader["Other_details"].ToString().PadRight(10)}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+
+
+            connection.Close();
+
+
+            Console.WriteLine("\n\nPress any key to continue...");
+            Console.ReadLine();
+
+            DisplayMenuOfMerchantMangement();
+
         }
 
         static void DisplayMenuofCustomerTypeManagement()
