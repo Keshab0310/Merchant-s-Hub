@@ -775,7 +775,6 @@ namespace Merchant_s_Hub
 
             DisplayMenuOfCustomerMangement();
         }
-
         static void DisplayMenuOfMerchantMangement()
         {
             Console.Clear();
