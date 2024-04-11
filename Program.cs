@@ -516,58 +516,6 @@ namespace Merchant_s_Hub
 
 
         }
-        static void SearchCustomer()
-        {
-            // Code here to search for the customer
-        }
-        static void ModifyCustomer()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ********************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Customer Modification     *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ********************************************");
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine();
-            Console.WriteLine("Please choose from the following Options:");
-            Console.WriteLine();
-            Console.WriteLine(" 1. Add the Costomer");
-            Console.WriteLine(" 2. Update the Costomer");
-            Console.WriteLine(" 3. Delete the costomer");
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
-            try
-            {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
-                switch (subChoice)
-                {
-                    case 1:
-                        // Add the costomer
-                        break;
-                    case 2:
-                        // Update the costomer
-                        break;
-                    case 3:
-                        // Delete the costomer
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a number.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
-        }
         static void DisplayMenuOfMerchantMangement()
         {
             Console.Clear();
@@ -616,7 +564,6 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
-
         static void ModifyMerchant()
         {
             Console.Clear();
