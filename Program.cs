@@ -10,8 +10,11 @@ namespace Merchant_s_Hub
     {
         /*static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
+        /*static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);*/
+        static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);
+
         static void Main(string[] args)
         {
 
@@ -618,12 +621,49 @@ namespace Merchant_s_Hub
             DisplayMenuOfCustomerMangement();
             Console.ReadKey();
         }
-        
-        static void DisplayCustomerDetails()
+        static void SeeCustomerType()
         {
-            string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectCustomerType = @"SELECT  
+                                      Customer_Types_code,
+                                      Customer_types_description
+                                      FROM customer_types";
+                MySqlCommand command = new MySqlCommand(selectCustomerType, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *        Customer Types Details            *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                while (reader.Read())
+                {
+                    Console.WriteLine($"\t{reader["Customer_Types_code"].ToString().PadRight(10)}\t{reader["Customer_Types_description"].ToString().PadRight(10)}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+
+
+            connection.Close();
+
+
+            Console.WriteLine("\n\nPress any key to continue...");
+            Console.ReadLine();
+        }
+        static void ViewCustomers()
+        {
 
 
             try
@@ -631,15 +671,15 @@ namespace Merchant_s_Hub
                 Console.WriteLine("Connecting to MySQL...");
                 connection.Open();
                 string selectCustomers = @"SELECT
-                                Customer_ID
-                                , Customer_name
-                                , Customer_Phone
-                                , Customer_email
-                                , Customer_Types_code
-                                , Other_details
-                            FROM
+                        Customer_ID
+                        , Customer_Types_code
+                        , Customer_name
+                        , Customer_Phone
+                        , Customer_email
+                        , Date_became_customer
+                    FROM
 
-                                Customers;";
+                        Customers;";
                 MySqlCommand command = new MySqlCommand(selectCustomers, connection);
 
                 MySqlDataReader reader = command.ExecuteReader();
@@ -656,7 +696,7 @@ namespace Merchant_s_Hub
 
                 while (reader.Read())
                 {
-                    Console.WriteLine($"\t{reader["Customer_ID"].ToString().PadRight(10)}\t{reader["Customer_name"].ToString().PadRight(10)}\t{reader["Customer_Phone"].ToString().PadRight(10)}\t{reader["Customer_email"].ToString().PadRight(10)}\t{reader["Customer_Types_code"].ToString().PadRight(10)}\t{reader["Other_details"].ToString().PadRight(10)}");
+                    Console.WriteLine($"\t{reader["Customer_ID"].ToString().PadRight(10)}\t{reader["Customer_Types_code"].ToString().PadRight(10)}\t{reader["Customer_name"].ToString().PadRight(10)}\t{reader["Customer_Phone"].ToString().PadRight(10)}\t{reader["Customer_email"].ToString().PadRight(10)}\t{reader["Date_became_customer"].ToString().PadRight(10)}");
                 }
                 reader.Close();
             }
@@ -675,6 +715,64 @@ namespace Merchant_s_Hub
 
 
         }
+        static void SearchCustomer()
+        {
+
+            Console.Write("\n\tEnter the customer type code between (1-10): ");
+            if (!int.TryParse(Console.ReadLine(), out int Customertypeid))
+            {
+                Console.WriteLine("Invalid Customer Type ID. Please enter a valid integer.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string searchQuery = $"Select * From customers where customer_types_code = {Customertypeid};";
+                    MySqlCommand command = new MySqlCommand(searchQuery, connection);
+                    connection.Open();
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        Console.WriteLine("\n\tCustomer Details:");
+                        Console.WriteLine("\t------------------");
+                        int count = 0;
+                        while (reader.Read())
+                        {
+                            count++;
+                            Console.WriteLine($"\t Customer {count}:");
+                            Console.WriteLine($"\tCustomer ID: {reader["Customer_id"]}");
+                            Console.WriteLine($"\tCustomer Type Code: {reader["customer_types_code"]}");
+                            Console.WriteLine($"\tCustomer Name: {reader["customer_name"]}");
+                            Console.WriteLine($"\tCustomer Phone: {reader["customer_phone"]}");
+                            Console.WriteLine($"\tCustomer Email: {reader["customer_email"]}");
+                            Console.WriteLine($"\tDate became customer: {reader["Date_became_customer"]}");
+                            Console.WriteLine("\t------------------");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\tNo customer found with the given customer type code.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.ReadLine();
+
+            DisplayMenuOfCustomerMangement();
+        }
+
         static void DisplayMenuOfMerchantMangement()
         {
             Console.Clear();
