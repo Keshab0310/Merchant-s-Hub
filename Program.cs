@@ -1,21 +1,19 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
 using System.Globalization;
+using System.Xml.Linq;
 
 
 namespace Merchant_s_Hub
 {
     internal class Program
     {
-        /* static string connectionString = "server=localhost;port=3306;user=Mazino;password=031015@Keshab;database=merchant_hub";
-
-         static MySqlConnection connection = new MySqlConnection(connectionString);*/
-
-       
+        static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);
 
         static void Main(string[] args)
         {
-            
+
             DisplayFrontmenu();
 
         }
