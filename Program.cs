@@ -110,9 +110,6 @@ namespace Merchant_s_Hub
                         DisplayMenuOfMerchantMangement();
                         break;
                     case 3:
-                        DisplayMenuofCustomerTypeManagement();
-                        break;
-                    case 4:
                         DisplayofAccountManagement();
                         break;
                     case 5:
@@ -1050,113 +1047,9 @@ namespace Merchant_s_Hub
                 Console.WriteLine(ex.ToString());
 
             }
-
-
             connection.Close();
-
-
             Console.WriteLine("\n\nPress any key to continue...");
             Console.ReadLine();
-
-            DisplayMenuOfMerchantMangement();
-
-        }
-
-        static void DisplayMenuofCustomerTypeManagement()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *    Menu of Customer Type Management      *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine();
-            Console.WriteLine("Please choose from the following Options:");
-            Console.WriteLine();
-            Console.WriteLine(" 1. Modify the Customer Type");
-            Console.WriteLine(" 2. View Customer type details");
-            Console.WriteLine(" 3. Assign or change Customer type for Customers");
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
-            try
-            {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
-                switch (subChoice)
-                {
-                    case 1:
-                        ModifyCustomerType();
-                        break;
-                    case 2:
-                        // View and the costomer details.
-                        break;
-                    case 3:
-                        // Assign or change customer types for customers
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a number.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
-        }
-        static void ModifyCustomerType()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *    Menu of Customer Type Modification    *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine();
-            Console.WriteLine("Please choose from the following Options:");
-            Console.WriteLine();
-            Console.WriteLine(" 1. Add the Customer Type");
-            Console.WriteLine(" 2. Update the Customer Type");
-            Console.WriteLine(" 3. Delete the Customer Type");
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
-            try
-            {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
-                switch (subChoice)
-                {
-                    case 1:
-                        // Add the Customer Type
-                        break;
-                    case 2:
-                        // Update the Customer Type
-                        break;
-                    case 3:
-                        // Delete the Customer Type
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a number.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
         }
         static void DisplayofAccountManagement()
         {
