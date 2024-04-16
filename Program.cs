@@ -11,11 +11,12 @@ namespace Merchant_s_Hub
         /*static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
         /*static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
-        static MySqlConnection connection = new MySqlConnection(connectionString);*/
+          static MySqlConnection connection = new MySqlConnection(connectionString);*/
         /*static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        static string connectionString = "server=localhost;port=3306;user=root;password=anmol@2023;database=merchant_hub";
-        static MySqlConnection connection = new MySqlConnection(connectionString);
+        /*static string connectionString = "server=localhost;port=3306;user=root;password=anmol@2023;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);*/
+
 
 
         static void Main(string[] args)
@@ -89,11 +90,10 @@ namespace Merchant_s_Hub
             Console.WriteLine();
             Console.WriteLine(" 1. Customer Management");
             Console.WriteLine(" 2. Merchant Management");
-            Console.WriteLine(" 3. Customer Type Management");
-            Console.WriteLine(" 4. Account Management");
-            Console.WriteLine(" 5. Product and Service Management");
-            Console.WriteLine(" 6. Purchase Management");
-            Console.WriteLine(" 7. Transaction Management");
+            Console.WriteLine(" 3. Account Management");
+            Console.WriteLine(" 4. Product and Service Management");
+            Console.WriteLine(" 5. Purchase Management");
+            Console.WriteLine(" 6. Transaction Management");
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -110,18 +110,15 @@ namespace Merchant_s_Hub
                         DisplayMenuOfMerchantMangement();
                         break;
                     case 3:
-                        DisplayMenuofCustomerTypeManagement();
-                        break;
-                    case 4:
                         DisplayofAccountManagement();
                         break;
-                    case 5:
+                    case 4:
                         DisplayProductandServiceManagement();
                         break;
-                    case 6:
+                    case 5:
                         DisplayCustomerPurchaseManagement();
                         break;
-                    case 7:
+                    case 6:
                         DisplayTransactionManagement();
                         break;
                     default:
@@ -1050,113 +1047,9 @@ namespace Merchant_s_Hub
                 Console.WriteLine(ex.ToString());
 
             }
-
-
             connection.Close();
-
-
             Console.WriteLine("\n\nPress any key to continue...");
             Console.ReadLine();
-
-            DisplayMenuOfMerchantMangement();
-
-        }
-
-        static void DisplayMenuofCustomerTypeManagement()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *    Menu of Customer Type Management      *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine();
-            Console.WriteLine("Please choose from the following Options:");
-            Console.WriteLine();
-            Console.WriteLine(" 1. Modify the Customer Type");
-            Console.WriteLine(" 2. View Customer type details");
-            Console.WriteLine(" 3. Assign or change Customer type for Customers");
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
-            try
-            {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
-                switch (subChoice)
-                {
-                    case 1:
-                        ModifyCustomerType();
-                        break;
-                    case 2:
-                        // View and the costomer details.
-                        break;
-                    case 3:
-                        // Assign or change customer types for customers
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a number.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
-        }
-        static void ModifyCustomerType()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *    Menu of Customer Type Modification    *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine();
-            Console.WriteLine("Please choose from the following Options:");
-            Console.WriteLine();
-            Console.WriteLine(" 1. Add the Customer Type");
-            Console.WriteLine(" 2. Update the Customer Type");
-            Console.WriteLine(" 3. Delete the Customer Type");
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
-            try
-            {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
-                switch (subChoice)
-                {
-                    case 1:
-                        // Add the Customer Type
-                        break;
-                    case 2:
-                        // Update the Customer Type
-                        break;
-                    case 3:
-                        // Delete the Customer Type
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a number.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
         }
         static void DisplayofAccountManagement()
         {
@@ -1164,7 +1057,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ******************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Account Management        *");
+            Console.WriteLine(" --------Menu of Account Management--------");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ******************************************");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -1175,6 +1068,8 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 2. View Costomer type details");
             Console.WriteLine(" 3. Link Account to customers");
             Console.WriteLine(" 4. Assign or change customer type for customers");
+            Console.WriteLine(" 5. Go back to ROot of database.");
+
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -1188,13 +1083,16 @@ namespace Merchant_s_Hub
                         ModifyAccount();
                         break;
                     case 2:
-                        // View and the Accounts details.
+                        ViewAccounts();
                         break;
                     case 3:
-                        // Link Account to customers
+                        LinkAccount();
                         break;
                     case 4:
-                        // Assign or change Account types.
+                        ChangeAccountType();
+                        break;
+                    case 5:
+                        DisplayofRootofDatabase();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -1216,7 +1114,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ******************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Account Modification      *");
+            Console.WriteLine(" --------Menu of Account Modification------");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ******************************************");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -1226,6 +1124,8 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Add the Account");
             Console.WriteLine(" 2. Update the Account");
             Console.WriteLine(" 3. Delete the Account");
+            Console.WriteLine(" 4. Go back to thedisplay of Account");
+
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -1236,13 +1136,16 @@ namespace Merchant_s_Hub
                 switch (subChoice)
                 {
                     case 1:
-                        // Add the Account
+                        AddAccount();
                         break;
                     case 2:
-                        // Update the Account
+                        UpdateAccount();
                         break;
                     case 3:
-                        // Delete the Account
+                        DelteAccount();
+                        break;
+                    case 4:
+                        DisplayofAccountManagement();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -1257,6 +1160,276 @@ namespace Merchant_s_Hub
             {
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
+
+        }
+        static void AddAccount()
+        {
+            Console.Write("\n\tEnter the Account ID: ");
+            string account_id = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Account name: ");
+            string account_name = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Date opened: ");
+            string date_opened = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Account Types code: ");
+            string account_types_code = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Customer ID: ");
+            string customer_id = Console.ReadLine();
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string insertQuery = $"Insert into accounts (account_id, account_name, date_opened, account_types_code, customer_id) values ('{account_id}', '{account_name}', '{date_opened}', '{account_types_code}', '{customer_id}')";
+                    MySqlCommand command = new MySqlCommand(insertQuery, connection);
+                    connection.Open();
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("\n\tAccount added successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\tFailed to add account.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to view updated Account...");
+            Console.ReadKey();
+            ViewAccounts();
+        }
+        static void UpdateAccount()
+        {
+            ViewAccounts();
+            Console.Write("Enter Account ID to modify: ");
+            if (!int.TryParse(Console.ReadLine(), out int account_id))
+            {
+                Console.WriteLine("Invalid Account ID. Please enter a valid Account ID.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("What do you want to modify?");
+            Console.WriteLine("1. Account Name");
+            Console.WriteLine("2. Account Phone");
+            Console.WriteLine("3. Account email");
+
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            string updatedValue = "";
+            string assignedvalue = "";
+            switch (choice)
+            {
+                case "1":
+                    updatedValue = "account_name";
+                    Console.Write("Enter new Account name: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "2":
+                    updatedValue = "date_oppened";
+                    Console.Write("Enter new date of Account: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string updateQuery = $"UPDATE Account SET {updatedValue} = @assignedvalue WHERE account_id = @account_id";
+                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@assignedvalue", assignedvalue);
+                    updateCommand.Parameters.AddWithValue("@account_id", account_id);
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Account information updated successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to update Account information.");
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Here is the details of Merchant with new modifications.");
+            Console.ReadLine();
+
+            ViewMerchants();
+
+        }
+        static void DelteAccount()
+        {
+            Console.Write("Enter Account ID to delete: ");
+            if (!int.TryParse(Console.ReadLine(), out int Account_ID))
+            {
+                Console.WriteLine("Invalid Account ID. Please enter a valid Account ID.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string deleteQuery = $"DELETE FROM transaction WHERE Account_ID = '{Account_ID}';DELETE FROM Account WHERE Account_ID = '{Account_ID}'; ";
+                    MySqlCommand command = new MySqlCommand(deleteQuery, connection);
+                    command.Parameters.AddWithValue("@Account_ID", Account_ID);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Account deleted successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to delete Account. Account ID not found.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            DisplayofAccountManagement();
+        }
+        static void ViewAccounts()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectAccount = @"SELECT
+                                     Account_Id
+                                    , Account_name
+                                    , Date_opened
+                                    , Account_Types_code
+                                    , Customer_ID
+                                       FROM
+                                        accounts;";
+                MySqlCommand command = new MySqlCommand(selectAccount, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" -------------Account Details--------------");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ******************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Account ID\tAccount Name\t\tDate Opened\tAccount Type Code\tCustomer ID\t\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"{reader["Account_Id"].ToString().PadRight(10)}\t{reader["Account_name"].ToString().PadRight(20)}\t{reader["Date_opened"].ToString().PadRight(10)}\t{reader["Account_Types_code"].ToString().PadRight(10)}\t{reader["Customer_ID"].ToString().PadRight(10)}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to go back to display menu of account...");
+            Console.ReadLine();
+            DisplayofAccountManagement();
+        }
+        static void LinkAccount()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string Join = "SELECT a.Account_Id, a.Account_name, a.Date_opened, a.Account_Types_code, a.Customer_ID, c.Customer_ID, c.Customer_name, c.Customer_phone, c.Customer_email, c.Date_became_customer, c.Customer_Types_code FROM accounts a JOIN customers c ON a.Customer_ID = c.Customer_ID";
+
+                using (MySqlCommand command = new MySqlCommand(Join, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        Console.WriteLine("Acc Id\tAcc Name\tCustomer ID\tCustomer name\tCustomer email\tCustomer Date");
+                        foreach (var row in reader)
+                        {
+                            Console.Write("{0}\t{1}\t", reader["Account_Id"], reader["Account_name"]);
+                            Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", reader["Customer_ID"], reader["Customer_name"], reader["Customer_email"], reader["Date_became_customer"]);
+                        }
+                    }
+                }
+                Console.WriteLine("Accounts have been linked to customers.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to continue...");
+            Console.ReadLine();
+        }
+        static void ChangeAccountType()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+
+                Console.Write("Enter the customer ID: ");
+                string customerId = Console.ReadLine();
+                Console.Write("Enter the new account type code: ");
+                string accountTypeCode = Console.ReadLine();
+
+                string update = "UPDATE accounts SET Account_Types_code = @accountTypeCode WHERE Customer_ID = @customerId";
+                using (MySqlCommand command = new MySqlCommand(update, connection))
+                {
+                    command.Parameters.AddWithValue("@customerId", customerId);
+                    command.Parameters.AddWithValue("@accountTypeCode", accountTypeCode);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    Console.WriteLine("{0} rows updated.", rowsAffected);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key view updated ...");
+            Console.ReadLine();
+            ViewAccounts();
+            Console.WriteLine("\n\nPress any key to continue...");
+            Console.ReadLine();
         }
         static void DisplayProductandServiceManagement()
         {
