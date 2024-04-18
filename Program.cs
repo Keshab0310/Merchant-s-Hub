@@ -12,10 +12,10 @@ namespace Merchant_s_Hub
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
         /*static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
           static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        /*static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
-        static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        static string connectionString = "server=localhost;port=3306;user=root;password=Anmol123$456;database=merchant_hub";
+        static string connectionString = "server=127.0.0.1:3307;port=3307;user=root;password=riya8556@;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);
+        /*static string connectionString = "server=localhost;port=3306;user=root;password=Anmol123$456;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);*/
 
 
 
@@ -1728,7 +1728,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Purchase Management       *");
+            Console.WriteLine(" --------Menu of Purchase Management-------");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -1738,6 +1738,8 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Modify Customer Purrchase");
             Console.WriteLine(" 2. Link Purchases to Customers and Products");
             Console.WriteLine(" 3. View customer Purchase History");
+            Console.WriteLine(" 4. Go back to root of database");
+
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -1751,10 +1753,13 @@ namespace Merchant_s_Hub
                         ModifyCustomerPurchase();
                         break;
                     case 2:
-                        // Link purchase to Customer and Products.
+                        LinkCustomersProductsPurchases();
                         break;
                     case 3:
-                        // View Customer Purchase history.
+                        viewCsPurchase();
+                        break;
+                    case 4:
+                        DisplayofRootofDatabase();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -1776,7 +1781,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *  Menu of Customer Purchase Modification  *");
+            Console.WriteLine(" --Menu of Customer Purchase Modification--");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -1786,6 +1791,8 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Add the Customer Purchase");
             Console.WriteLine(" 2. Update the Customer Purchase");
             Console.WriteLine(" 3. Delete the Customer Purchase");
+            Console.WriteLine(" 4. Go back to root of database.");
+
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -1796,13 +1803,16 @@ namespace Merchant_s_Hub
                 switch (subChoice)
                 {
                     case 1:
-                        // Add the Customer Purchase
+                        addCsPurchase();
                         break;
                     case 2:
-                        // Update the Customer Purchase
+                        updateCsPurchase();
                         break;
                     case 3:
-                        // Delete the Customer Purchase
+                        deleteCustomerPurchase();
+                        break;
+                    case 4:
+                        DisplayofRootofDatabase();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -1817,6 +1827,238 @@ namespace Merchant_s_Hub
             {
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
+        }
+        static void addCsPurchase()
+        {
+
+            Console.WriteLine("The above table is reference to Select the more reference Purchase ID because it's a primary key and cannot be reated.");
+            Console.Write("\n\tEnter the Purchase ID: ");
+            string Purchase_id = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Date in (yyyy-mm-dd) order : ");
+            string Date = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Quality: ");
+            string quality = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Other Details: ");
+            string other_details = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Customer ID: ");
+            string customer_id = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Product and Services Code: ");
+            string Product_and_Services_Code = Console.ReadLine();
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string insertQuery = $"Insert into customer_purchase (Purchase_id, Date, quality, other_details, customer_id, Product_and_Services_Code) values ('{Purchase_id}', '{Date}', '{quality}', '{other_details}', '{customer_id}', '{Product_and_Services_Code}')";
+                    MySqlCommand command = new MySqlCommand(insertQuery, connection);
+                    connection.Open();
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("\n\tProduct and Services added successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\tFailed to add account.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            Console.WriteLine("Press any key to view updated Table");
+            Console.ReadLine();
+            viewCsPurchase();
+        }
+        static void updateCsPurchase()
+        {
+
+            Console.Write("Enter Purchase ID to modify: ");
+            if (!int.TryParse(Console.ReadLine(), out int Purchase_id))
+            {
+                Console.WriteLine("Invalid Purchase ID. Please enter a valid Purchase ID.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("What do you want to modify?");
+            Console.WriteLine("1. Date of Customer Purchase");
+            Console.WriteLine("2. Quality of Purchase");
+            Console.WriteLine("3. Other Details");
+
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            string updatedValue = "";
+            string assignedvalue = "";
+            switch (choice)
+            {
+                case "1":
+                    updatedValue = "Date";
+                    Console.Write("Enter new Date: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "2":
+                    updatedValue = "Quality";
+                    Console.Write("Enter new Quality of Purchase: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "3":
+                    updatedValue = "Other_details";
+                    Console.WriteLine("Enter new Other Detail: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string updateQuery = $"UPDATE Customer_Purchase SET {updatedValue} = @assignedvalue WHERE Purchase_id = @Purchase_id";
+                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@assignedvalue", assignedvalue);
+                    updateCommand.Parameters.AddWithValue("@Purchase_id", Purchase_id);
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Purchase information updated successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to update Purchase information.");
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            Console.WriteLine("Here is the updated view........");
+            Console.ReadKey();
+            viewCsPurchase();
+        }
+        static void viewCsPurchase()
+        {
+            try
+            {
+
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectProductandServices = @"SELECT purchase_id, Quality, other_details, Customer_ID, Product_and_services_code, date FROM Customer_purchase;";
+                MySqlCommand command = new MySqlCommand(selectProductandServices, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" --------Customer Purchase Details---------");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Purchase Id \t Quality \t Other details\t\tCustomer ID\tProduct And Services_code\tDate\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"\t{reader["purchase_id"].ToString().PadRight(7)}\t{reader["Quality"].ToString().PadRight(10)}\t{reader["other_details"].ToString().PadRight(30)}\t{reader["Customer_ID"].ToString().PadRight(10)}\t{reader["Product_and_services_code"].ToString().PadRight(10)}\t{reader["date"].ToString().PadRight(10)}\t");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("Press any key to go to Root of Database...");
+            Console.ReadLine();
+            DisplayProductandServiceManagement();
+        }
+        static void deleteCustomerPurchase()
+        {
+            Console.Write("Enter Purchase ID to Delete: ");
+            if (!int.TryParse(Console.ReadLine(), out int purchase_id))
+            {
+                Console.WriteLine("Invalid Purchase ID. Please enter a valid ID.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string deleteQuery = $"DELETE FROM transactions WHERE purchase_id = '{purchase_id}';DELETE FROM customer_purchase WHERE purchase_id = '{purchase_id}'; ";
+                    MySqlCommand command = new MySqlCommand(deleteQuery, connection);
+                    command.Parameters.AddWithValue("@purchase_id", purchase_id);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("purchase ID deleted successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to delete Purchase ID.ID not found.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to view Updated menu...");
+            Console.ReadKey();
+            viewCsPurchase();
+        }
+        static void LinkCustomersProductsPurchases()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string Join = @"SELECT c.Customer_name, p.Products_and_services_Description, cp.Date FROM customer_purchase cp JOIN customers c ON c.Customer_ID = cp.Customer_ID JOIN products_and_services p ON p.Product_and_services_code = cp.Product_and_services_code";
+
+                using (MySqlCommand command = new MySqlCommand(Join, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        Console.WriteLine("Customer Name\t\tProduct Description\t\t\tPurchase Date\n\n");
+                        while (reader.Read())
+                        {
+                            Console.WriteLine($"{reader["Customer_name"].ToString().PadRight(30)}\t{reader["Products_and_services_Description"].ToString().PadRight(30)}\t{reader["Date"].ToString().PadRight(10)}\t");
+                        }
+                    }
+                }
+                Console.WriteLine("\n\n\tCustomers, products, and purchases have been linked.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to Go back to Root of database...");
+            Console.ReadLine();
+            DisplayofRootofDatabase();
         }
         static void DisplayTransactionManagement()
         {
