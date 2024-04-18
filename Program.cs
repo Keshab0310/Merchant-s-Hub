@@ -8,15 +8,14 @@ namespace Merchant_s_Hub
 {
     internal class Program
     {
-        /*static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
-        static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        /*static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
-          static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        static string connectionString = "server=127.0.0.1:3307;port=3307;user=root;password=riya8556@;database=merchant_hub";
+        static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);
-        /*static string connectionString = "server=localhost;port=3306;user=root;password=Anmol123$456;database=merchant_hub";
+        /*static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
-
+        /*static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);*/
+        /*static string connectionString = "server=localhost;port=3306;user=root;password=anmol@2023;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);*/
 
 
         static void Main(string[] args)
@@ -27,10 +26,11 @@ namespace Merchant_s_Hub
         }
         static void DisplayFrontmenu()
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *          Welcome to Merchant Hub         *");
+            Console.WriteLine(" *----------Welcome to Merchant Hub---------*");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -80,7 +80,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" *******************************************");
             Console.WriteLine(" *                                         *");
-            Console.WriteLine(" *     Welcome to Root of Merchant Hub     *");
+            Console.WriteLine(" *-----Welcome to Root of Merchant Hub-----*");
             Console.WriteLine(" *                                         *");
             Console.WriteLine(" *******************************************");
             Console.ForegroundColor = ConsoleColor.White;
@@ -141,14 +141,26 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *    Welcome to Retriving Data Section     *");
+            Console.WriteLine(" *----Welcome to Retriving Data Section-----*");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("This is for looking all the data of the database. Here, you can get important information related to the database.");
+            Console.WriteLine("This is for looking all the data of the database. Here, you can get important information related to the database.\n\n\n");
             Console.WriteLine();
+
+
+
+            Console.WriteLine(" ****************************************************");
+            Console.WriteLine(" *                                                  *");
+            Console.WriteLine(" *----Version 2 of Merchant Hub is Comming Soon-----*");
+            Console.WriteLine(" *                                                  *");
+            Console.WriteLine(" ****************************************************");
+            Console.WriteLine("Please enter any key to go back to The main menu.......");
+            Console.ReadLine();
+            DisplayFrontmenu();
+            /*
             Console.WriteLine("Please Choose from the following options: ");
             Console.WriteLine();
             Console.WriteLine("1. Beginner-Level Data");
@@ -189,11 +201,11 @@ namespace Merchant_s_Hub
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" ************************************************");
+                Console.WriteLine(" **************************************************");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" *     Welcome to Beginner-Level Data Section     *");
+                Console.WriteLine(" *-----Welcome to Beginner-Level Data Section-----*");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" ************************************************");
+                Console.WriteLine(" **************************************************");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Here You can get the Beginner Level data or Simple data of the database.");
                 Console.WriteLine();
@@ -265,11 +277,11 @@ namespace Merchant_s_Hub
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" ************************************************");
+                Console.WriteLine(" **************************************************");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" *    Welcome to Intermediate-Level Data Section  *");
+                Console.WriteLine(" *---Welcome to Intermediate-Level Data Section---*");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" ************************************************");
+                Console.WriteLine(" **************************************************");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Here You can get the Intermediate Level data or Medium level data of the database.");
                 Console.WriteLine();
@@ -341,11 +353,11 @@ namespace Merchant_s_Hub
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" ************************************************");
+                Console.WriteLine(" **************************************************");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" *      Welcome to Advanced-Level Data Section    *");
+                Console.WriteLine(" *-----Welcome to Advanced-Level Data Section-----*");
                 Console.WriteLine(" *                                                *");
-                Console.WriteLine(" ************************************************");
+                Console.WriteLine(" **************************************************");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Here You can get the Advanced Level data or complex data of the database.");
                 Console.WriteLine();
@@ -413,6 +425,7 @@ namespace Merchant_s_Hub
                     Console.WriteLine($"An unexpected error occurred: {ex.Message}");
                 }
             }
+            */
 
 
         }
@@ -420,11 +433,11 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Customer Modification     *");
+            Console.WriteLine(" *-------Menu of Customer Modification------*");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
@@ -476,18 +489,20 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Customer Modification     *");
+            Console.WriteLine(" *-------Menu of Customer Modification------*");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
             Console.WriteLine();
-            Console.WriteLine(" 1. Add the Costomer");
-            Console.WriteLine(" 2. Update the Costomer");
-            Console.WriteLine(" 3. Delete the costomer");
+            Console.WriteLine(" 1. Add the Customer");
+            Console.WriteLine(" 2. Update the Customer");
+            Console.WriteLine(" 3. Delete the Customer");
+            Console.WriteLine(" 4. Go back to display menu of Customer");
+
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -501,10 +516,13 @@ namespace Merchant_s_Hub
                         AddCustomer();
                         break;
                     case 2:
-                        // Update the costomer
+                        updateCustomer();
                         break;
                     case 3:
                         deleteCustomer();
+                        break;
+                    case 4:
+                        DisplayMenuOfCustomerMangement();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -575,11 +593,88 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Press any key to view the updated Customer...");
             Console.ReadKey();
             Console.ReadLine();
 
-            DisplayMenuOfCustomerMangement();
+            ViewCustomers();
+        }
+        static void updateCustomer()
+        {
+
+            Console.Write("Enter Customer ID to modify: ");
+            if (!int.TryParse(Console.ReadLine(), out int customer_id))
+            {
+                Console.WriteLine("Invalid Customer ID. Please enter a valid Customer ID.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("What do you want to modify?");
+            Console.WriteLine("1. Customer Name");
+            Console.WriteLine("2. Customer Phone");
+            Console.WriteLine("3. Customer email");
+
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            string updatedValue = "";
+            string assignedvalue = "";
+            switch (choice)
+            {
+                case "1":
+                    updatedValue = "customer_name";
+                    Console.Write("Enter new Customer name: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "2":
+                    updatedValue = "customer_phone";
+                    Console.Write("Enter new phone number of the Customer: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "3":
+                    updatedValue = "customer_email";
+                    Console.WriteLine("Enter new email for the customer: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string updateQuery = $"UPDATE Customers SET {updatedValue} = @assignedvalue WHERE customer_id = @customer_id";
+                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@assignedvalue", assignedvalue);
+                    updateCommand.Parameters.AddWithValue("@customer_id", customer_id);
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Customer information updated successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to update customer information.");
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            ViewCustomers();
+
+            Console.WriteLine("Press any key to view the updated Customer data....");
+            Console.ReadLine();
+            ViewCustomers();
         }
         static void deleteCustomer()
         {
@@ -617,9 +712,9 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
-            Console.WriteLine("Press any key to continue...");
-            DisplayMenuOfCustomerMangement();
+            Console.WriteLine("Here is the updated data of the Customers...");
             Console.ReadKey();
+            ViewCustomers();
         }
         static void SeeCustomerType()
         {
@@ -638,7 +733,7 @@ namespace Merchant_s_Hub
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(" ********************************************");
                 Console.WriteLine(" *                                          *");
-                Console.WriteLine(" *        Customer Types Details            *");
+                Console.WriteLine(" *----------Customer Types Details----------*");
                 Console.WriteLine(" *                                          *");
                 Console.WriteLine(" ********************************************");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -659,8 +754,9 @@ namespace Merchant_s_Hub
             connection.Close();
 
 
-            Console.WriteLine("\n\nPress any key to continue...");
+            Console.WriteLine("\n\nPress any key to go back to root of database...");
             Console.ReadLine();
+            DisplayofRootofDatabase();
         }
         static void ViewCustomers()
         {
@@ -710,10 +806,10 @@ namespace Merchant_s_Hub
             connection.Close();
 
 
-            Console.WriteLine("\n\nPress any key to continue...");
+            Console.WriteLine("\n\nPress any key to o back to the Display menu of Customer...");
             Console.ReadLine();
 
-
+            ModifyCustomer();
         }
         static void SearchCustomer()
         {
@@ -766,11 +862,10 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Press any key to go back to root of database...");
             Console.ReadKey();
             Console.ReadLine();
-
-            DisplayMenuOfCustomerMangement();
+            DisplayofRootofDatabase();
         }
         static void DisplayMenuOfMerchantMangement()
         {
@@ -778,7 +873,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *         Menu of Merchant Management      *");
+            Console.WriteLine(" *--------Menu of Merchant Management-------*");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -788,6 +883,8 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Modify the Merchant");
             Console.WriteLine(" 2. View Merchant details");
             Console.WriteLine(" 3. Search for Merchant");
+            Console.WriteLine(" 4. Go back to Root of Database...");
+
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -805,6 +902,9 @@ namespace Merchant_s_Hub
                         break;
                     case 3:
                         SearchMerchant();
+                        break;
+                    case 4:
+                        DisplayofRootofDatabase();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -826,7 +926,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Merchant Modification     *");
+            Console.WriteLine(" *-------Menu of Merchant Modification------*");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -850,7 +950,7 @@ namespace Merchant_s_Hub
                         AddMerchant();
                         break;
                     case 2:
-                        // Update the M
+                        updateMerchant();
                         break;
                     case 3:
                         deleteMerchant();
@@ -914,11 +1014,87 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Press any key to view updated merchant data...");
             Console.ReadKey();
             Console.ReadLine();
 
-            DisplayMenuOfMerchantMangement();
+            ViewMerchants();
+        }
+        static void updateMerchant()
+        {
+            ViewMerchants();
+            Console.Write("Enter Merchant ID to modify: ");
+            if (!int.TryParse(Console.ReadLine(), out int merchant_id))
+            {
+                Console.WriteLine("Invalid Merchant ID. Please enter a valid Merchant ID.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("What do you want to modify?");
+            Console.WriteLine("1. Merchant Name");
+            Console.WriteLine("2. Merchant Phone");
+            Console.WriteLine("3. Merchant email");
+
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            string updatedValue = "";
+            string assignedvalue = "";
+            switch (choice)
+            {
+                case "1":
+                    updatedValue = "merchant_name";
+                    Console.Write("Enter new Merchant name: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "2":
+                    updatedValue = "merchant_phone";
+                    Console.Write("Enter new phone number of the Merchant: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "3":
+                    updatedValue = "email";
+                    Console.WriteLine("Enter new email for the Merchant: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string updateQuery = $"UPDATE Merchants SET {updatedValue} = @assignedvalue WHERE merchant_id = @merchant_id";
+                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@assignedvalue", assignedvalue);
+                    updateCommand.Parameters.AddWithValue("@merchant_id", merchant_id);
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Merchant information updated successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to update Merchant information.");
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Here is the details of Merchant with new modifications.");
+            ViewMerchants();
+
         }
         static void deleteMerchant()
         {
@@ -956,8 +1132,8 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
-            Console.WriteLine("Press any key to continue...");
-            DisplayMenuOfMerchantMangement();
+            Console.WriteLine("Press any key view the updated Merchant.....");
+            ViewMerchants();
             Console.ReadKey();
         }
         static void SearchMerchant()
@@ -1010,7 +1186,7 @@ namespace Merchant_s_Hub
         {
             try
             {
-                Console.Clear();
+
                 Console.WriteLine("Connecting to MySQL...");
                 connection.Open();
                 string selectMerchant = @"SELECT
@@ -1031,7 +1207,7 @@ namespace Merchant_s_Hub
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(" ********************************************");
                 Console.WriteLine(" *                                          *");
-                Console.WriteLine(" *         Merchant Details                 *");
+                Console.WriteLine(" *-------------Merchant Details-------------*");
                 Console.WriteLine(" *                                          *");
                 Console.WriteLine(" ********************************************");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -1050,16 +1226,17 @@ namespace Merchant_s_Hub
             connection.Close();
             Console.WriteLine("\n\nPress any key to continue...");
             Console.ReadLine();
+            DisplayMenuOfMerchantMangement();
         }
         static void DisplayofAccountManagement()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" --------Menu of Account Management--------");
+            Console.WriteLine(" *--------Menu of Account Management--------*");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
@@ -1112,11 +1289,11 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" --------Menu of Account Modification------");
+            Console.WriteLine(" *--------Menu of Account Modification------*");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
@@ -1329,23 +1506,23 @@ namespace Merchant_s_Hub
                 Console.WriteLine("Connecting to MySQL...");
                 connection.Open();
                 string selectAccount = @"SELECT
-                                     Account_Id
-                                    , Account_name
-                                    , Date_opened
-                                    , Account_Types_code
-                                    , Customer_ID
-                                       FROM
-                                        accounts;";
+                                             Account_Id
+                                            , Account_name
+                                            , Date_opened
+                                            , Account_Types_code
+                                            , Customer_ID
+                                               FROM
+                                                accounts;";
                 MySqlCommand command = new MySqlCommand(selectAccount, connection);
 
                 MySqlDataReader reader = command.ExecuteReader();
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" ********************************************");
                 Console.WriteLine(" *                                          *");
-                Console.WriteLine(" -------------Account Details--------------");
+                Console.WriteLine(" *-------------Account Details--------------*");
                 Console.WriteLine(" *                                          *");
-                Console.WriteLine(" ******************************************");
+                Console.WriteLine(" ********************************************");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Account ID\tAccount Name\t\tDate Opened\tAccount Type Code\tCustomer ID\t\n");
                 while (reader.Read())
@@ -1437,7 +1614,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" --Menu of Product and Service Management--");
+            Console.WriteLine(" *--Menu of Product and Service Management--*");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -1488,11 +1665,11 @@ namespace Merchant_s_Hub
                 Console.WriteLine("Connecting to MySQL...");
                 connection.Open();
                 string selectProductandServices = @"SELECT
-                                     product_and_services_code
-                                    , products_and_services_Description
-                                    , Merchant_id
-                                       FROM
-                                        products_and_services;";
+                                             product_and_services_code
+                                            , products_and_services_Description
+                                            , Merchant_id
+                                               FROM
+                                                products_and_services;";
                 MySqlCommand command = new MySqlCommand(selectProductandServices, connection);
 
                 MySqlDataReader reader = command.ExecuteReader();
@@ -1610,7 +1787,7 @@ namespace Merchant_s_Hub
             Console.WriteLine("Press any key to view updated Product and Services...");
             Console.ReadKey();
             Console.ReadLine();
-            ViewProductandServices();
+            viewCsPurchase();
         }
         static void UpdatePandS()
         {
@@ -1728,7 +1905,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" --------Menu of Purchase Management-------");
+            Console.WriteLine(" *--------Menu of Purchase Management-------*");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -1781,7 +1958,7 @@ namespace Merchant_s_Hub
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" --Menu of Customer Purchase Modification--");
+            Console.WriteLine(" *--Menu of Customer Purchase Modification--*");
             Console.WriteLine(" *                                          *");
             Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -1967,7 +2144,7 @@ namespace Merchant_s_Hub
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(" ********************************************");
                 Console.WriteLine(" *                                          *");
-                Console.WriteLine(" --------Customer Purchase Details---------");
+                Console.WriteLine(" *--------Customer Purchase Details---------*");
                 Console.WriteLine(" *                                          *");
                 Console.WriteLine(" ********************************************");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -2076,6 +2253,8 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Modify the Transaction");
             Console.WriteLine(" 2. Link Transaction to accounts");
             Console.WriteLine(" 3. View Transaction history");
+            Console.WriteLine(" 4. Go back to Root of Database");
+
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -2089,10 +2268,13 @@ namespace Merchant_s_Hub
                         ModifyTransaction();
                         break;
                     case 2:
-                        // View and the Accounts details.
+                        LinkTransactionsToAccounts();
                         break;
                     case 3:
-                        // Assign or change Account types.
+                        TransactionHistory();
+                        break;
+                    case 4:
+                        DisplayofRootofDatabase();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -2134,13 +2316,13 @@ namespace Merchant_s_Hub
                 switch (subChoice)
                 {
                     case 1:
-                        // Add the Transaction
+                        Addtransaction();
                         break;
                     case 2:
-                        // Update the Transaction
+                        updateTransaction();
                         break;
                     case 3:
-                        // Delete the Transaction
+                        deleteTransaction();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -2156,6 +2338,288 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+        static void Addtransaction()
+        {
 
+            Console.WriteLine("The above table is reference to Select the more reference Purchase ID because it's a primary key and cannot be reated.");
+            Console.Write("\n\tEnter the Transaction ID: ");
+            string Transaction_id = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Date Openned in (yyyy-mm-dd) order : ");
+            string Date_opened = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Amount of Transaction: ");
+            string ammount_of_transaction = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Other Details: ");
+            string other_details = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Purchase ID: ");
+            string purchase_id = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Account ID: ");
+            string account_id = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Transaction Type code: ");
+            string transaction_types_code = Console.ReadLine();
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string insertQuery = $"Insert into transactions (Transaction_id, Date_opened, ammount_of_transaction, other_details, purchase_id, account_id,transaction_types_code ) values ('{Transaction_id}', '{Date_opened}', '{ammount_of_transaction}', '{other_details}', '{purchase_id}', '{account_id}','{transaction_types_code}')";
+                    MySqlCommand command = new MySqlCommand(insertQuery, connection);
+                    connection.Open();
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("\n\tTransaction added successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\tFailed to add Transaction.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            Console.WriteLine("Press any key to view updated Table");
+            Console.ReadLine();
+            viewTransactions();
+
+
+        }
+        static void updateTransaction()
+        {
+            Console.Write("Enter Transaction ID to modify: ");
+            if (!int.TryParse(Console.ReadLine(), out int Transaction_id))
+            {
+                Console.WriteLine("Invalid Transaction ID. Please enter a valid Transaction ID.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("What do you want to modify?");
+            Console.WriteLine("1. Transaction Date");
+            Console.WriteLine("2. Amount of Transaction");
+            Console.WriteLine("3. Other Details");
+
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            string updatedValue = "";
+            string assignedvalue = "";
+            switch (choice)
+            {
+                case "1":
+                    updatedValue = "Date_opened";
+                    Console.Write("Enter new Date: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "2":
+                    updatedValue = "Ammount_of_transaction";
+                    Console.Write("Enter new Amount of Transaction: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "3":
+                    updatedValue = "Other_details";
+                    Console.WriteLine("Enter new Other Detail: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string updateQuery = $"UPDATE transactions SET {updatedValue} = @assignedvalue WHERE Transaction_id = @Transaction_id";
+                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@assignedvalue", assignedvalue);
+                    updateCommand.Parameters.AddWithValue("@Transaction_id", Transaction_id);
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Transaction information updated successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to update Transaction information.");
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            Console.WriteLine("Here is the updated view........");
+            Console.ReadKey();
+            viewTransactions();
+
+        }
+        static void deleteTransaction()
+        {
+            Console.Write("Enter Transaction ID to Delete: ");
+            if (!int.TryParse(Console.ReadLine(), out int transaction_id))
+            {
+                Console.WriteLine("Invalid Transaction ID. Please enter a valid ID.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string deleteQuery = $"DELETE FROM transactions WHERE Transaction_Id = @transaction_id;";
+                    MySqlCommand command = new MySqlCommand(deleteQuery, connection);
+                    command.Parameters.AddWithValue("@transaction_id", transaction_id);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Transaction deleted successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to delete Transaction. ID not found.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to view updated transaction table....");
+            Console.ReadLine();
+            viewTransactions();
+        }
+        static void viewTransactions()
+        {
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectTransactions = @"SELECT Transaction_Id, Ammount_of_transaction, other_details, Account_ID, Transaction_Types_code, Date_opened FROM transactions;";
+                MySqlCommand command = new MySqlCommand(selectTransactions, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *------------Transaction Details-----------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************\n\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Transaction Id \t Ammount \t Other details\t\tAccount ID\tTransaction Type_code\tDate\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"\t{reader["Transaction_Id"].ToString().PadRight(7)}\t{reader["Ammount_of_transaction"].ToString().PadRight(10)}\t{reader["other_details"].ToString().PadRight(30)}\t{reader["Account_ID"].ToString().PadRight(10)}\t{reader["Transaction_Types_code"].ToString().PadRight(10)}\t{reader["Date_opened"].ToString().PadRight(10)}\t");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("Press any key to go to Root of Database...");
+            Console.ReadLine();
+            DisplayofRootofDatabase();
+        }
+        static void LinkTransactionsToAccounts()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string Join = @"SELECT a.Account_name, t.Ammount_of_transaction, t.Date_opened FROM transactions t JOIN accounts a ON a.Account_Id = t.Account_ID;";
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *--------Linked Form of Transaction--------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                using (MySqlCommand command = new MySqlCommand(Join, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        Console.WriteLine("Account Name\t\tTransaction Amount\t\tTransaction Date\n\n");
+                        while (reader.Read())
+                        {
+                            Console.WriteLine($"{reader["Account_name"].ToString().PadRight(30)}\t{reader["Ammount_of_transaction"].ToString().PadRight(20)}\t{reader["Date_opened"].ToString().PadRight(10)}\t");
+                        }
+                    }
+                }
+                Console.WriteLine("\n\n\tTransactions have been linked to accounts.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to go back to root of database....");
+            Console.ReadLine();
+            DisplayofRootofDatabase();
+        }
+        static void TransactionHistory()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string Join = @"SELECT a.Account_name, t.Transaction_Id, t.Ammount_of_transaction, t.Date_opened FROM transactions t JOIN accounts a ON a.Account_Id = t.Account_ID ORDER BY t.Date_opened DESC";
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *------------Transaction History-----------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                using (MySqlCommand command = new MySqlCommand(Join, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        Console.WriteLine("Account Name\t\tTransaction ID\t\tTransaction Amount\t\tTransaction Date\n\n");
+                        while (reader.Read())
+                        {
+                            Console.WriteLine($"{reader["Account_name"].ToString().PadRight(30)}\t{reader["Transaction_Id"].ToString().PadRight(15)}\t{reader["Ammount_of_transaction"].ToString().PadRight(15)}\t{reader["Date_opened"].ToString().PadRight(10)}\t");
+                        }
+                    }
+                }
+                Console.WriteLine("\n\n\tTransaction history has been displayed.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to go back to Root of Database...");
+            Console.ReadLine();
+            DisplayofRootofDatabase();
+        }
     }
 }
+
