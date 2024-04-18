@@ -14,8 +14,8 @@ namespace Merchant_s_Hub
           static MySqlConnection connection = new MySqlConnection(connectionString);*/
         /*static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        /*static string connectionString = "server=localhost;port=3306;user=root;password=anmol@2023;database=merchant_hub";
-        static MySqlConnection connection = new MySqlConnection(connectionString);*/
+        static string connectionString = "server=localhost;port=3306;user=root;password=Anmol123$456;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);
 
 
 
@@ -850,7 +850,7 @@ namespace Merchant_s_Hub
                         AddMerchant();
                         break;
                     case 2:
-                        // Update the Merchant
+                        // Update the M
                         break;
                     case 3:
                         deleteMerchant();
@@ -1435,18 +1435,19 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *  Menu of Product and Service Management  *");
+            Console.WriteLine(" --Menu of Product and Service Management--");
             Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" ********************************************");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
             Console.WriteLine();
             Console.WriteLine(" 1. Modify the Product and Service");
             Console.WriteLine(" 2. View Product and Service details");
-            Console.WriteLine(" 3. Track quantities and other details");
+            Console.WriteLine(" 3. Go back to Root menu.");
+
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -1460,10 +1461,10 @@ namespace Merchant_s_Hub
                         ModifyProductandServices();
                         break;
                     case 2:
-                        // View and the Product and Services
+                        ViewProductandServices();
                         break;
                     case 3:
-                        // Assign or change Product and Services
+                        DisplayofRootofDatabase();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -1478,6 +1479,47 @@ namespace Merchant_s_Hub
             {
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
+        }
+        static void ViewProductandServices()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectProductandServices = @"SELECT
+                                     product_and_services_code
+                                    , products_and_services_Description
+                                    , Merchant_id
+                                       FROM
+                                        products_and_services;";
+                MySqlCommand command = new MySqlCommand(selectProductandServices, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *      Product and Services Details        *");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Product and Services Code \tProduct and Services Description \t\t Merchant_id\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"\t\t{reader["product_and_services_code"].ToString().PadRight(20)}\t{reader["products_and_services_Description"].ToString().PadRight(45)}\t{reader["Merchant_id"].ToString().PadRight(30)}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to go back to display menu...");
+            Console.ReadLine();
+            DisplayProductandServiceManagement();
         }
         static void ModifyProductandServices()
         {
@@ -1494,7 +1536,7 @@ namespace Merchant_s_Hub
             Console.WriteLine();
             Console.WriteLine(" 1. Add the Product and Services ");
             Console.WriteLine(" 2. Update the Product and Services ");
-            Console.WriteLine(" 3. Product and Services ");
+            Console.WriteLine(" 3. Delete Product and Services ");
             Console.WriteLine();
             Console.Write("Enter your choice: ");
 
@@ -1505,13 +1547,13 @@ namespace Merchant_s_Hub
                 switch (subChoice)
                 {
                     case 1:
-                        // Add the Product and Services 
+                        AddPandS();
                         break;
                     case 2:
-                        // Update the Product and Services 
+                        UpdatePandS();
                         break;
                     case 3:
-                        // Delete the Product and Services 
+                        deletePandS();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -1527,6 +1569,158 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
 
+        }
+        static void AddPandS()
+        {
+            Console.Write("\n\tEnter the Product and Services Code: ");
+            string product_and_services_code = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Product and Services Description: ");
+            string products_and_services_Description = Console.ReadLine();
+
+            Console.Write("\n\tEnter the Customer ID: ");
+            string customer_id = Console.ReadLine();
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string insertQuery = $"Insert into accounts (product_and_services_code, products_and_services_Description,customer_id) values ('{product_and_services_code}', '{products_and_services_Description}', '{customer_id}')";
+                    MySqlCommand command = new MySqlCommand(insertQuery, connection);
+                    connection.Open();
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Product and Services Added Successfully added successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\tFailed to add Product and Services.");
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            connection.Close();
+            Console.WriteLine("Press any key to view updated Product and Services...");
+            Console.ReadKey();
+            Console.ReadLine();
+            ViewProductandServices();
+        }
+        static void UpdatePandS()
+        {
+
+            Console.Write("Enter Product and Services Code to modify: ");
+            if (!int.TryParse(Console.ReadLine(), out int product_and_services_code))
+            {
+                Console.WriteLine("Invalid Product and Services Code. Please enter a valid code.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("Do you want to modify Product and Services description?");
+            Console.WriteLine("1. Want to modify it");
+            Console.WriteLine("2. Want to Go back to to Modification Menu.");
+            Console.WriteLine("3. Exit the console app.");
+
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            string updatedValue = "";
+            string assignedvalue = "";
+            switch (choice)
+            {
+                case "1":
+                    updatedValue = "products_and_services_Description";
+                    Console.Write("Enter new Product and Service Description: ");
+                    assignedvalue = Console.ReadLine();
+                    break;
+                case "2":
+                    ModifyProductandServices();
+                    break;
+                case "3":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string updateQuery = $"UPDATE products_and_services SET {updatedValue} = @assignedvalue WHERE product_and_services_code = @product_and_services_code";
+                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@assignedvalue", assignedvalue);
+                    updateCommand.Parameters.AddWithValue("@product_and_services_code", product_and_services_code);
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Product and Services information updated successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to update Product and Services information.");
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Here is the details of Product and Services with new modifications.");
+            ViewProductandServices();
+
+        }
+        static void deletePandS()
+        {
+            Console.Write("Enter Product and Service Code to delete: ");
+            if (!int.TryParse(Console.ReadLine(), out int product_and_services_code))
+            {
+                Console.WriteLine("Invalid Product and Service Code. Please enter a valid Code.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string deleteQuery = $"DELETE FROM customer_purchase WHERE product_and_services_code = '{product_and_services_code}';DELETE FROM products_and_services WHERE Account_ID = '{product_and_services_code}'; ";
+                    MySqlCommand command = new MySqlCommand(deleteQuery, connection);
+                    command.Parameters.AddWithValue("@product_and_services_code", product_and_services_code);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Product and Services deleted successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to delete Product and Services. Product and Services code not found.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("Press any key to view updated Product and services...");
         }
         static void DisplayCustomerPurchaseManagement()
         {
