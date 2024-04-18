@@ -98,7 +98,11 @@ namespace Merchant_s_Hub
 
             try
             {
-                int choice = Convert.ToInt32(Console.ReadLine());
+                int choice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6);
 
                 switch (choice)
                 {
@@ -159,114 +163,8 @@ namespace Merchant_s_Hub
             Console.WriteLine("Please enter any key to go back to The main menu.......");
             Console.ReadLine();
             DisplayFrontmenu();
-            /*
-            Console.WriteLine("Please Choose from the following options: ");
-            Console.WriteLine();
-            Console.WriteLine("1. Beginner-Level Data");
-            Console.WriteLine("2. Intermediate-Level Data");
-            Console.WriteLine("3. Advanced-Level Data");
-            Console.WriteLine();
-            Console.Write("Enter Your Choice: ");
-            try
-            {
-                int choice = Convert.ToInt32(Console.ReadLine());
 
-                switch (choice)
-                {
-                    case 1:
-                        BeginnerLevelData();
-                        break;
-                    case 2:
-                        IntermediateLevelData();
-                        break;
-                    case 3:
-                        AdvancedLevelData();
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a number.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
-
-            void BeginnerLevelData()
-            {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" **************************************************");
-                Console.WriteLine(" *                                                *");
-                Console.WriteLine(" *-----Welcome to Beginner-Level Data Section-----*");
-                Console.WriteLine(" *                                                *");
-                Console.WriteLine(" **************************************************");
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("Here You can get the Beginner Level data or Simple data of the database.");
-                Console.WriteLine();
-                Console.WriteLine("Please Choose from the following options: ");
-                Console.WriteLine();
-                Console.WriteLine("1.  Query 1");
-                Console.WriteLine("2.  Query 2");
-                Console.WriteLine("3.  Query 3");
-                Console.WriteLine("4.  Query 4");
-                Console.WriteLine("5.  Query 5");
-                Console.WriteLine("6.  Query 6");
-                Console.WriteLine("7.  Query 7");
-                Console.WriteLine("8.  Query 8");
-                Console.WriteLine("9.  Query 9");
-                Console.WriteLine("10. Query 10");
-                Console.WriteLine();
-                Console.Write("Enter Your Choice: ");
-                try
-                {
-                    int choice = Convert.ToInt32(Console.ReadLine());
-
-                    switch (choice)
-                    {
-                        case 1:
-                            //
-                            break;
-                        case 2:
-                            //
-                            break;
-                        case 3:
-                            //
-                            break;
-                        case 4:
-                            //
-                            break;
-                        case 5:
-                            //
-                            break;
-                        case 6:
-                            //
-                            break;
-                        case 7:
-                            //
-                            break;
-                        case 8:
-                            //
-                            break;
-                        case 9:
-                            //
-                            break;
-                        case 10:
-                            //
-                            break;
-                        default:
-                            Console.WriteLine("Invalid choice. Please try again.");
-                            break;
-                    }
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Invalid input. Please enter a number.");
-                }
+        }
         static void DisplayMenuOfCustomerMangement()
         {
             Console.Clear();
@@ -286,12 +184,13 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 4. Search for Customers by their types.");
             Console.WriteLine(" 5. Go Back to Root of Database");
             Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 5);
                 switch (subChoice)
                 {
                     case 1:
@@ -346,7 +245,11 @@ namespace Merchant_s_Hub
 
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 4);
 
                 switch (subChoice)
                 {
@@ -455,23 +358,27 @@ namespace Merchant_s_Hub
             Console.WriteLine("3. Customer email");
 
             Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
+            int choice;
+            do
+            {
+                Console.Write("\tEnter your choice: ");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3);
 
             string updatedValue = "";
             string assignedvalue = "";
             switch (choice)
             {
-                case "1":
+                case 1:
                     updatedValue = "customer_name";
                     Console.Write("Enter new Customer name: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "2":
+                case 2:
                     updatedValue = "customer_phone";
                     Console.Write("Enter new phone number of the Customer: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "3":
+                case 3:
                     updatedValue = "customer_email";
                     Console.WriteLine("Enter new email for the customer: ");
                     assignedvalue = Console.ReadLine();
@@ -623,7 +530,7 @@ namespace Merchant_s_Hub
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(" ********************************************");
                 Console.WriteLine(" *                                          *");
-                Console.WriteLine(" *         Customer Details                 *");
+                Console.WriteLine(" *-------------Customer Details-------------*");
                 Console.WriteLine(" *                                          *");
                 Console.WriteLine(" ********************************************");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -776,11 +683,15 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 3. Delete the Merchant");
             Console.WriteLine(" 4. Go Back to Merchant Management");
             Console.WriteLine();
-            Console.Write("Enter your choice: ");
+
 
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 4);
 
                 switch (subChoice)
                 {
@@ -875,24 +786,27 @@ namespace Merchant_s_Hub
             Console.WriteLine("2. Merchant Phone");
             Console.WriteLine("3. Merchant email");
 
-            Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
+            int choice;
+            do
+            {
+                Console.Write("\tEnter your choice: ");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3);
 
             string updatedValue = "";
             string assignedvalue = "";
             switch (choice)
             {
-                case "1":
+                case 1:
                     updatedValue = "merchant_name";
                     Console.Write("Enter new Merchant name: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "2":
+                case 2:
                     updatedValue = "merchant_phone";
                     Console.Write("Enter new phone number of the Merchant: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "3":
+                case 3:
                     updatedValue = "email";
                     Console.WriteLine("Enter new email for the Merchant: ");
                     assignedvalue = Console.ReadLine();
@@ -1086,12 +1000,14 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 5. Go back to ROot of database.");
 
             Console.WriteLine();
-            Console.Write("Enter your choice: ");
 
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 5);
                 switch (subChoice)
                 {
                     case 1:
@@ -1142,11 +1058,13 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 4. Go back to thedisplay of Account");
 
             Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 4);
 
                 switch (subChoice)
                 {
@@ -1240,19 +1158,22 @@ namespace Merchant_s_Hub
             Console.WriteLine("2. Account Phone");
             Console.WriteLine("3. Account email");
 
-            Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
+            int choice;
+            do
+            {
+                Console.Write("\tEnter your choice: ");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 2);
 
             string updatedValue = "";
             string assignedvalue = "";
             switch (choice)
             {
-                case "1":
+                case 1:
                     updatedValue = "account_name";
                     Console.Write("Enter new Account name: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "2":
+                case 2:
                     updatedValue = "date_oppened";
                     Console.Write("Enter new date of Account: ");
                     assignedvalue = Console.ReadLine();
@@ -1464,12 +1385,13 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 3. Go back to Root menu.");
 
             Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
-
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 3);
                 switch (subChoice)
                 {
                     case 1:
@@ -1515,7 +1437,7 @@ namespace Merchant_s_Hub
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(" ********************************************");
                 Console.WriteLine(" *                                          *");
-                Console.WriteLine(" *      Product and Services Details        *");
+                Console.WriteLine(" *-------Product and Services Details-------*");
                 Console.WriteLine(" *                                          *");
                 Console.WriteLine(" ********************************************");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -1540,11 +1462,11 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ******************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *        Menu of Product and Services      *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ******************************************");
+            Console.WriteLine(" **********************************************");
+            Console.WriteLine(" *                                            *");
+            Console.WriteLine(" *--------Menu of Product and Services--------*");
+            Console.WriteLine(" *                                            *");
+            Console.WriteLine(" **********************************************");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
@@ -1553,11 +1475,14 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 2. Update the Product and Services ");
             Console.WriteLine(" 3. Delete Product and Services ");
             Console.WriteLine();
-            Console.Write("Enter your choice: ");
 
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 5);
 
                 switch (subChoice)
                 {
@@ -1625,7 +1550,7 @@ namespace Merchant_s_Hub
             Console.WriteLine("Press any key to view updated Product and Services...");
             Console.ReadKey();
             Console.ReadLine();
-            ViewProductandServices();
+            viewCsPurchase();
         }
         static void UpdatePandS()
         {
@@ -1644,22 +1569,25 @@ namespace Merchant_s_Hub
             Console.WriteLine("2. Want to Go back to to Modification Menu.");
             Console.WriteLine("3. Exit the console app.");
 
-            Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
+            int subChoice;
+            do
+            {
+                Console.Write("\tEnter your choice: ");
+            } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 5);
 
             string updatedValue = "";
             string assignedvalue = "";
-            switch (choice)
+            switch (subChoice)
             {
-                case "1":
+                case 1:
                     updatedValue = "products_and_services_Description";
                     Console.Write("Enter new Product and Service Description: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "2":
+                case 2:
                     ModifyProductandServices();
                     break;
-                case "3":
+                case 3:
                     Environment.Exit(0);
                     break;
                 default:
@@ -1756,11 +1684,14 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 4. Go back to root of database");
 
             Console.WriteLine();
-            Console.Write("Enter your choice: ");
 
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 4);
 
                 switch (subChoice)
                 {
@@ -1809,11 +1740,15 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 4. Go back to root of database.");
 
             Console.WriteLine();
-            Console.Write("Enter your choice: ");
+
 
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 4);
 
                 switch (subChoice)
                 {
@@ -1910,24 +1845,27 @@ namespace Merchant_s_Hub
             Console.WriteLine("2. Quality of Purchase");
             Console.WriteLine("3. Other Details");
 
-            Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
+            int subChoice;
+            do
+            {
+                Console.Write("\tEnter your choice: ");
+            } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 5);
 
             string updatedValue = "";
             string assignedvalue = "";
-            switch (choice)
+            switch (subChoice)
             {
-                case "1":
+                case 1:
                     updatedValue = "Date";
                     Console.Write("Enter new Date: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "2":
+                case 2:
                     updatedValue = "Quality";
                     Console.Write("Enter new Quality of Purchase: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "3":
+                case 3:
                     updatedValue = "Other_details";
                     Console.WriteLine("Enter new Other Detail: ");
                     assignedvalue = Console.ReadLine();
@@ -2079,11 +2017,11 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ********************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *       Menu of Transaction Management     *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ********************************************");
+            Console.WriteLine(" **********************************************");
+            Console.WriteLine(" *                                            *");
+            Console.WriteLine(" *-------Menu of Transaction Management-------*");
+            Console.WriteLine(" *                                            *");
+            Console.WriteLine(" **********************************************");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
@@ -2098,7 +2036,11 @@ namespace Merchant_s_Hub
 
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 4);
 
                 switch (subChoice)
                 {
@@ -2132,11 +2074,11 @@ namespace Merchant_s_Hub
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(" ********************************************");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" *      Menu of Transaction Modification    *");
-            Console.WriteLine(" *                                          *");
-            Console.WriteLine(" ********************************************");
+            Console.WriteLine(" **********************************************");
+            Console.WriteLine(" *                                            *");
+            Console.WriteLine(" *------Menu of Transaction Modification------*");
+            Console.WriteLine(" *                                            *");
+            Console.WriteLine(" **********************************************");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
@@ -2149,7 +2091,11 @@ namespace Merchant_s_Hub
 
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 3);
 
                 switch (subChoice)
                 {
@@ -2247,24 +2193,27 @@ namespace Merchant_s_Hub
             Console.WriteLine("2. Amount of Transaction");
             Console.WriteLine("3. Other Details");
 
-            Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
+            int subChoice;
+            do
+            {
+                Console.Write("\tEnter your choice: ");
+            } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 3);
 
             string updatedValue = "";
             string assignedvalue = "";
-            switch (choice)
+            switch (subChoice)
             {
-                case "1":
+                case 1:
                     updatedValue = "Date_opened";
                     Console.Write("Enter new Date: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "2":
+                case 2:
                     updatedValue = "Ammount_of_transaction";
                     Console.Write("Enter new Amount of Transaction: ");
                     assignedvalue = Console.ReadLine();
                     break;
-                case "3":
+                case 3:
                     updatedValue = "Other_details";
                     Console.WriteLine("Enter new Other Detail: ");
                     assignedvalue = Console.ReadLine();
