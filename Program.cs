@@ -1723,7 +1723,7 @@ namespace Merchant_s_Hub
             Console.WriteLine("Press any key to view updated Product and Services...");
             Console.ReadKey();
             Console.ReadLine();
-            viewCsPurchase();
+            ViewProductandServices();
         }
         static void UpdatePandS()
         {
