@@ -1838,6 +1838,8 @@ namespace Merchant_s_Hub
             }
 
             Console.WriteLine("Press any key to view updated Product and services...");
+            ViewProductandServices();
+
         }
         static void DisplayCustomerPurchaseManagement()
         {
