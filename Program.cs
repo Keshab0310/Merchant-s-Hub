@@ -8,13 +8,13 @@ namespace Merchant_s_Hub
 {
     internal class Program
     {
-       /* static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
-        static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
+        static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);
-        /*static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
+        /*static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
-        /*static string connectionString = "server=localhost;port=3306;user=root;password=anmol@2023;database=merchant_hub";
+        /*static string connectionString = "server=127.0.0.1;port=3307;user=root;password=riya8556@;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);*/
+        /*static string connectionString = "server=127.0.0.1;port=3306;user=root;password=Anmol123$456;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
 
 
@@ -42,12 +42,14 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 2. Retriving Data");
             Console.WriteLine(" 3. Exit");
 
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
             try
             {
-                int choice = Convert.ToInt32(Console.ReadLine());
+                int choice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3);
+
 
                 switch (choice)
                 {
@@ -94,6 +96,7 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 4. Product and Service Management");
             Console.WriteLine(" 5. Purchase Management");
             Console.WriteLine(" 6. Transaction Management");
+            Console.WriteLine(" 7. Go Back to Root of Database");
             Console.WriteLine();
 
             try
@@ -102,7 +105,7 @@ namespace Merchant_s_Hub
                 do
                 {
                     Console.Write("\tEnter your choice: ");
-                } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6);
+                } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 7);
 
                 switch (choice)
                 {
@@ -123,6 +126,9 @@ namespace Merchant_s_Hub
                         break;
                     case 6:
                         DisplayTransactionManagement();
+                        break;
+                    case 7:
+                        DisplayFrontmenu();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -153,8 +159,6 @@ namespace Merchant_s_Hub
             Console.WriteLine("This is for looking all the data of the database. Here, you can get important information related to the database.\n\n\n");
             Console.WriteLine();
 
-
-
             Console.WriteLine(" ****************************************************");
             Console.WriteLine(" *                                                  *");
             Console.WriteLine(" *----Version 2 of Merchant Hub is Comming Soon-----*");
@@ -181,7 +185,7 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Modifying the Customer");
             Console.WriteLine(" 2. View Customer Details");
             Console.WriteLine(" 3. View Customer Types");
-            Console.WriteLine(" 4. Search for Customers by their types.");
+            Console.WriteLine(" 4. Search for Customer by their types.");
             Console.WriteLine(" 5. Go Back to Root of Database");
             Console.WriteLine();
             try
@@ -240,8 +244,6 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 3. Delete the Customer");
             Console.WriteLine(" 4. Go back to display menu of Customer");
 
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
 
             try
             {
@@ -281,7 +283,8 @@ namespace Merchant_s_Hub
         }
         static void AddCustomer()
         {
-            ViewCustomers();
+            viewcustomer();
+            Console.WriteLine("Please insure that the Customer ID is cannot be repeated because it is Primary key ....");
 
             Console.Write("\n\tEnter the customer ID: ");
             string Customer_Id = Console.ReadLine();
@@ -298,22 +301,18 @@ namespace Merchant_s_Hub
             Console.Write("\n\tEnter the date became customer (yyyy-mm-dd): ");
             string Date_became_customer = Console.ReadLine();
 
-
-            Console.Write("\n\tEnter the customer type code between (1-10): ");
-            if (!int.TryParse(Console.ReadLine(), out int Customer_Types_Code))
+            int customer_types_code;
+            do
             {
-                Console.WriteLine("Invalid Customer Type ID. Please enter a valid integer.");
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
-                return;
-            }
+                Console.Write("\n\tEnter the customer type code between (1-10): ");
+            } while (!int.TryParse(Console.ReadLine(), out customer_types_code) || customer_types_code < 1 || customer_types_code > 10);
 
 
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string insertQuery = $"Insert into customers (Customer_Id, Customer_name, Customer_phone, Customer_email, Date_became_customer, customer_types_code) values ('{Customer_Id}', '{Customer_name}', '{Customer_phone}', '{Customer_email}', '{Date_became_customer}', '{Customer_Types_Code}');";
+                    string insertQuery = $"Insert into customers (Customer_Id, Customer_name, Customer_phone, Customer_email, Date_became_customer, customer_types_code) values ('{Customer_Id}', '{Customer_name}', '{Customer_phone}', '{Customer_email}', '{Date_became_customer}', '{customer_types_code}');";
                     MySqlCommand command = new MySqlCommand(insertQuery, connection);
                     connection.Open();
 
@@ -335,14 +334,14 @@ namespace Merchant_s_Hub
             }
 
             Console.WriteLine("Press any key to view the updated Customer...");
-            Console.ReadKey();
             Console.ReadLine();
 
             ViewCustomers();
         }
         static void updateCustomer()
         {
-
+            viewcustomer();
+            Console.WriteLine("Be sure to select the valid customer Id for the functioning of the app......");
             Console.Write("Enter Customer ID to modify: ");
             if (!int.TryParse(Console.ReadLine(), out int customer_id))
             {
@@ -357,7 +356,7 @@ namespace Merchant_s_Hub
             Console.WriteLine("2. Customer Phone");
             Console.WriteLine("3. Customer email");
 
-            Console.Write("Enter your choice: ");
+
             int choice;
             do
             {
@@ -423,6 +422,8 @@ namespace Merchant_s_Hub
         }
         static void deleteCustomer()
         {
+            viewcustomer();
+            Console.WriteLine("Be sure to select the valid customer Id for the functioning of the app......");
             Console.Write("Enter Customer ID to delete: ");
             if (!int.TryParse(Console.ReadLine(), out int customer_ID))
             {
@@ -431,6 +432,7 @@ namespace Merchant_s_Hub
                 Console.ReadKey();
                 return;
             }
+
 
             try
             {
@@ -503,10 +505,51 @@ namespace Merchant_s_Hub
             Console.ReadLine();
             DisplayofRootofDatabase();
         }
+        static void viewcustomer()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectCustomers = @"SELECT
+                        Customer_ID
+                        , Customer_Types_code
+                        , Customer_name
+                        , Customer_Phone
+                        , Customer_email
+                        , Date_became_customer
+                    FROM
+
+                        Customers;";
+                MySqlCommand command = new MySqlCommand(selectCustomers, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *-------------Customer Details-------------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                while (reader.Read())
+                {
+                    Console.WriteLine($"\t{reader["Customer_ID"].ToString().PadRight(10)}\t{reader["Customer_Types_code"].ToString().PadRight(10)}\t{reader["Customer_name"].ToString().PadRight(10)}\t{reader["Customer_Phone"].ToString().PadRight(10)}\t{reader["Customer_email"].ToString().PadRight(10)}\t{reader["Date_became_customer"].ToString().PadRight(10)}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to o back to the Display menu of Customer...");
+            Console.ReadLine();
+        }
         static void ViewCustomers()
         {
-
-
             try
             {
                 Console.WriteLine("Connecting to MySQL...");
@@ -546,11 +589,7 @@ namespace Merchant_s_Hub
                 Console.WriteLine(ex.ToString());
 
             }
-
-
             connection.Close();
-
-
             Console.WriteLine("\n\nPress any key to o back to the Display menu of Customer...");
             Console.ReadLine();
 
@@ -559,14 +598,11 @@ namespace Merchant_s_Hub
         static void SearchCustomer()
         {
 
-            Console.Write("\n\tEnter the customer type code between (1-10): ");
-            if (!int.TryParse(Console.ReadLine(), out int Customertypeid))
+            int Customertypeid;
+            do
             {
-                Console.WriteLine("Invalid Customer Type ID. Please enter a valid integer.");
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
-                return;
-            }
+                Console.Write("\n\tEnter the customer type code between (1-10): ");
+            } while (!int.TryParse(Console.ReadLine(), out Customertypeid) || Customertypeid < 1 || Customertypeid > 10);
 
             try
             {
@@ -630,12 +666,14 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 3. Search for Merchant");
             Console.WriteLine(" 4. Go back to Root of Database...");
 
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
-
             try
             {
-                int subChoice = Convert.ToInt32(Console.ReadLine());
+                int subChoice;
+                do
+                {
+                    Console.Write("\tEnter your choice: ");
+                } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 4);
+
 
                 switch (subChoice)
                 {
@@ -723,6 +761,8 @@ namespace Merchant_s_Hub
         }
         static void AddMerchant()
         {
+            viewmerchants();
+            Console.WriteLine("Please insure that the Merchant ID is cannot be repeated because it is Primary key ....");
             Console.Write("\n\tEnter the Merchant ID: ");
             string merchant_id = Console.ReadLine();
 
@@ -771,7 +811,7 @@ namespace Merchant_s_Hub
         }
         static void updateMerchant()
         {
-            ViewMerchants();
+            viewmerchants();
             Console.Write("Enter Merchant ID to modify: ");
             if (!int.TryParse(Console.ReadLine(), out int merchant_id))
             {
@@ -850,6 +890,7 @@ namespace Merchant_s_Hub
         }
         static void deleteMerchant()
         {
+            viewmerchants();
             Console.Write("Enter Merchant ID to delete: ");
             if (!int.TryParse(Console.ReadLine(), out int Merchant_ID))
             {
@@ -934,6 +975,51 @@ namespace Merchant_s_Hub
             DisplayMenuOfMerchantMangement();
 
         }
+        static void viewmerchants()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectMerchant = @"SELECT
+                          Merchant_ID
+                        , Merchant_name
+                        , Merchant_Phone
+                        , Email
+                        , Other_details
+                    FROM
+
+                        Merchants;";
+                MySqlCommand command = new MySqlCommand(selectMerchant, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *-------------Merchant Details-------------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("MerchantID\tMerchant Name\t\tMerchant Phone\tMerchant Email\t\tOther Details\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"{reader["Merchant_ID"].ToString().PadRight(10)}\t{reader["Merchant_name"].ToString().PadRight(20)}\t{reader["Merchant_Phone"].ToString().PadRight(10)}\t{reader["Email"].ToString().PadRight(20)}\t{reader["Other_details"].ToString().PadRight(10)}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to continue editing...");
+            Console.ReadLine();
+        }
         static void ViewMerchants()
         {
             try
@@ -976,7 +1062,7 @@ namespace Merchant_s_Hub
 
             }
             connection.Close();
-            Console.WriteLine("\n\nPress any key to continue...");
+            Console.WriteLine("\n\nPress any key to go back to display menu of merchant management...");
             Console.ReadLine();
             DisplayMenuOfMerchantMangement();
         }
@@ -994,7 +1080,7 @@ namespace Merchant_s_Hub
             Console.WriteLine("Please choose from the following Options:");
             Console.WriteLine();
             Console.WriteLine(" 1. Modify the Accounts");
-            Console.WriteLine(" 2. View Costomer type details");
+            Console.WriteLine(" 2. View Customer type details");
             Console.WriteLine(" 3. Link Account to customers");
             Console.WriteLine(" 4. Assign or change customer type for customers");
             Console.WriteLine(" 5. Go back to ROot of database.");
@@ -1097,13 +1183,16 @@ namespace Merchant_s_Hub
         }
         static void AddAccount()
         {
+            viewaccount();
+            Console.WriteLine("The above table is reference to Select the valid Account Id because it's a primary key and cannot be reated.");
+
             Console.Write("\n\tEnter the Account ID: ");
             string account_id = Console.ReadLine();
 
             Console.Write("\n\tEnter the Account name: ");
             string account_name = Console.ReadLine();
 
-            Console.Write("\n\tEnter the Date opened: ");
+            Console.Write("\n\tEnter the Date opened in (yyyy-mm-dd) format: ");
             string date_opened = Console.ReadLine();
 
             Console.Write("\n\tEnter the Account Types code: ");
@@ -1136,14 +1225,13 @@ namespace Merchant_s_Hub
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
-
             Console.WriteLine("Press any key to view updated Account...");
             Console.ReadKey();
             ViewAccounts();
         }
         static void UpdateAccount()
         {
-            ViewAccounts();
+            viewaccount();
             Console.Write("Enter Account ID to modify: ");
             if (!int.TryParse(Console.ReadLine(), out int account_id))
             {
@@ -1211,14 +1299,13 @@ namespace Merchant_s_Hub
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
-            Console.WriteLine("Here is the details of Merchant with new modifications.");
+            Console.WriteLine("Here is the details of Account with new modifications.");
             Console.ReadLine();
-
-            ViewMerchants();
-
+            ViewAccounts();
         }
         static void DelteAccount()
         {
+            viewaccount();
             Console.Write("Enter Account ID to delete: ");
             if (!int.TryParse(Console.ReadLine(), out int Account_ID))
             {
@@ -1256,6 +1343,48 @@ namespace Merchant_s_Hub
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             DisplayofAccountManagement();
+        }
+        static void viewaccount()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectAccount = @"SELECT
+                                             Account_Id
+                                            , Account_name
+                                            , Date_opened
+                                            , Account_Types_code
+                                            , Customer_ID
+                                               FROM
+                                                accounts;";
+                MySqlCommand command = new MySqlCommand(selectAccount, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *-------------Account Details--------------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Account ID\tAccount Name\t\tDate Opened\tAccount Type Code\tCustomer ID\t\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"{reader["Account_Id"].ToString().PadRight(10)}\t{reader["Account_name"].ToString().PadRight(20)}\t{reader["Date_opened"].ToString().PadRight(10)}\t{reader["Account_Types_code"].ToString().PadRight(10)}\t{reader["Customer_ID"].ToString().PadRight(10)}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to continue editing...");
+            Console.ReadLine();
         }
         static void ViewAccounts()
         {
@@ -1337,8 +1466,11 @@ namespace Merchant_s_Hub
             try
             {
                 Console.Clear();
+                viewaccount();
+
                 Console.WriteLine("Connecting to MySQL...");
                 connection.Open();
+                Console.WriteLine("Here is the details about the account and it's type and be sure to select the best preferences...");
 
                 Console.Write("Enter the customer ID: ");
                 string customerId = Console.ReadLine();
@@ -1364,8 +1496,7 @@ namespace Merchant_s_Hub
             Console.WriteLine("\n\nPress any key view updated ...");
             Console.ReadLine();
             ViewAccounts();
-            Console.WriteLine("\n\nPress any key to continue...");
-            Console.ReadLine();
+
         }
         static void DisplayProductandServiceManagement()
         {
@@ -1458,6 +1589,45 @@ namespace Merchant_s_Hub
             Console.ReadLine();
             DisplayProductandServiceManagement();
         }
+        static void viewPandS()
+        {
+            try
+            {
+
+                Console.Clear();
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectProductandServices = @"SELECT
+                                             product_and_services_code
+                                            , products_and_services_Description
+                                            , Merchant_id
+                                               FROM
+                                                products_and_services;";
+                MySqlCommand command = new MySqlCommand(selectProductandServices, connection);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *-------Product and Services Details-------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Product and Services Code \tProduct and Services Description \t\t Merchant_id\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"\t\t{reader["product_and_services_code"].ToString().PadRight(20)}\t{reader["products_and_services_Description"].ToString().PadRight(45)}\t{reader["Merchant_id"].ToString().PadRight(30)}");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            connection.Close();
+            Console.WriteLine("\n\nPress any key to continue editing...");
+        }
         static void ModifyProductandServices()
         {
             Console.Clear();
@@ -1512,6 +1682,9 @@ namespace Merchant_s_Hub
         }
         static void AddPandS()
         {
+            viewPandS();
+            Console.WriteLine("The above table is reference to Select the valid Product and Service code because it's a primary key and cannot be reated.");
+
             Console.Write("\n\tEnter the Product and Services Code: ");
             string product_and_services_code = Console.ReadLine();
 
@@ -1525,7 +1698,7 @@ namespace Merchant_s_Hub
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string insertQuery = $"Insert into accounts (product_and_services_code, products_and_services_Description,customer_id) values ('{product_and_services_code}', '{products_and_services_Description}', '{customer_id}')";
+                    string insertQuery = $"Insert into products_and_services (product_and_services_code, products_and_services_Description,customer_id) values ('{product_and_services_code}', '{products_and_services_Description}', '{customer_id}')";
                     MySqlCommand command = new MySqlCommand(insertQuery, connection);
                     connection.Open();
 
@@ -1554,7 +1727,7 @@ namespace Merchant_s_Hub
         }
         static void UpdatePandS()
         {
-
+            viewPandS();
             Console.Write("Enter Product and Services Code to modify: ");
             if (!int.TryParse(Console.ReadLine(), out int product_and_services_code))
             {
@@ -1629,6 +1802,7 @@ namespace Merchant_s_Hub
         }
         static void deletePandS()
         {
+            viewPandS();
             Console.Write("Enter Product and Service Code to delete: ");
             if (!int.TryParse(Console.ReadLine(), out int product_and_services_code))
             {
@@ -1780,8 +1954,8 @@ namespace Merchant_s_Hub
         }
         static void addCsPurchase()
         {
-
-            Console.WriteLine("The above table is reference to Select the more reference Purchase ID because it's a primary key and cannot be reated.");
+            viewcs();
+            Console.WriteLine("The above table is reference to Select the valid Purchase ID because it's a primary key and cannot be reated.");
             Console.Write("\n\tEnter the Purchase ID: ");
             string Purchase_id = Console.ReadLine();
 
@@ -1830,7 +2004,7 @@ namespace Merchant_s_Hub
         }
         static void updateCsPurchase()
         {
-
+            viewcs();
             Console.Write("Enter Purchase ID to modify: ");
             if (!int.TryParse(Console.ReadLine(), out int Purchase_id))
             {
@@ -1849,7 +2023,7 @@ namespace Merchant_s_Hub
             do
             {
                 Console.Write("\tEnter your choice: ");
-            } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 5);
+            } while (!int.TryParse(Console.ReadLine(), out subChoice) || subChoice < 1 || subChoice > 3);
 
             string updatedValue = "";
             string assignedvalue = "";
@@ -1906,11 +2080,43 @@ namespace Merchant_s_Hub
             Console.ReadKey();
             viewCsPurchase();
         }
+        static void viewcs()
+        {
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectProductandServices = @"SELECT purchase_id, Quality, other_details, Customer_ID, Product_and_services_code, date FROM Customer_purchase;";
+                MySqlCommand command = new MySqlCommand(selectProductandServices, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *--------Customer Purchase Details---------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Purchase Id \t Quality \t Other details\t\tCustomer ID\tProduct And Services_code\tDate\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"\t{reader["purchase_id"].ToString().PadRight(7)}\t{reader["Quality"].ToString().PadRight(10)}\t{reader["other_details"].ToString().PadRight(30)}\t{reader["Customer_ID"].ToString().PadRight(10)}\t{reader["Product_and_services_code"].ToString().PadRight(10)}\t{reader["date"].ToString().PadRight(10)}\t");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("Press any key to continue Editing...");
+            Console.ReadLine();
+        }
         static void viewCsPurchase()
         {
             try
             {
-
                 Console.WriteLine("Connecting to MySQL...");
                 connection.Open();
                 string selectProductandServices = @"SELECT purchase_id, Quality, other_details, Customer_ID, Product_and_services_code, date FROM Customer_purchase;";
@@ -1943,6 +2149,7 @@ namespace Merchant_s_Hub
         }
         static void deleteCustomerPurchase()
         {
+            viewcs();
             Console.Write("Enter Purchase ID to Delete: ");
             if (!int.TryParse(Console.ReadLine(), out int purchase_id))
             {
@@ -2083,8 +2290,6 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Add the Transaction");
             Console.WriteLine(" 2. Update the Transaction");
             Console.WriteLine(" 3. Delete the Transaction");
-            Console.WriteLine();
-            Console.Write("Enter your choice: ");
 
             try
             {
@@ -2121,8 +2326,8 @@ namespace Merchant_s_Hub
         }
         static void Addtransaction()
         {
-
-            Console.WriteLine("The above table is reference to Select the more reference Purchase ID because it's a primary key and cannot be reated.");
+            viewtrans();
+            Console.WriteLine("The above table is reference to Select the valid Purchase ID because it's a primary key and cannot be reated.");
             Console.Write("\n\tEnter the Transaction ID: ");
             string Transaction_id = Console.ReadLine();
 
@@ -2176,6 +2381,7 @@ namespace Merchant_s_Hub
         }
         static void updateTransaction()
         {
+            viewtrans();
             Console.Write("Enter Transaction ID to modify: ");
             if (!int.TryParse(Console.ReadLine(), out int Transaction_id))
             {
@@ -2254,6 +2460,7 @@ namespace Merchant_s_Hub
         }
         static void deleteTransaction()
         {
+            viewtrans();
             Console.Write("Enter Transaction ID to Delete: ");
             if (!int.TryParse(Console.ReadLine(), out int transaction_id))
             {
@@ -2291,6 +2498,39 @@ namespace Merchant_s_Hub
             Console.WriteLine("Press any key to view updated transaction table....");
             Console.ReadLine();
             viewTransactions();
+        }
+        static void viewtrans()
+        {
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                connection.Open();
+                string selectTransactions = @"SELECT Transaction_Id, Ammount_of_transaction, other_details, Account_ID, Transaction_Types_code, Date_opened FROM transactions;";
+                MySqlCommand command = new MySqlCommand(selectTransactions, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" ********************************************");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" *------------Transaction Details-----------*");
+                Console.WriteLine(" *                                          *");
+                Console.WriteLine(" ********************************************\n\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Transaction Id \t Ammount \t Other details\t\tAccount ID\tTransaction Type_code\tDate\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"\t{reader["Transaction_Id"].ToString().PadRight(7)}\t{reader["Ammount_of_transaction"].ToString().PadRight(10)}\t{reader["other_details"].ToString().PadRight(30)}\t{reader["Account_ID"].ToString().PadRight(10)}\t{reader["Transaction_Types_code"].ToString().PadRight(10)}\t{reader["Date_opened"].ToString().PadRight(10)}\t");
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            connection.Close();
+            Console.WriteLine("Press any key to continue editing...");
+            Console.ReadLine();
         }
         static void viewTransactions()
         {
