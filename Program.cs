@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System.Data;
 using System.Globalization;
 using System.Xml.Linq;
@@ -577,6 +577,7 @@ namespace Merchant_s_Hub
                 Console.WriteLine(" *                                          *");
                 Console.WriteLine(" ********************************************");
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Customer ID\tCustomer Types code\tCustomer Name\tCustomer Phone\tCustomer Email\t Other_details\n");
 
                 while (reader.Read())
                 {
@@ -1914,11 +1915,9 @@ namespace Merchant_s_Hub
             Console.WriteLine(" 1. Add the Customer Purchase");
             Console.WriteLine(" 2. Update the Customer Purchase");
             Console.WriteLine(" 3. Delete the Customer Purchase");
-            Console.WriteLine(" 4. Go back to root of database.");
+            Console.WriteLine(" 4. Go back to the Display Customer Purchase Section.");
 
             Console.WriteLine();
-
-
             try
             {
                 int subChoice;
@@ -1939,7 +1938,7 @@ namespace Merchant_s_Hub
                         deleteCustomerPurchase();
                         break;
                     case 4:
-                        DisplayofRootofDatabase();
+                        DisplayCustomerPurchaseManagement();
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -2148,7 +2147,7 @@ namespace Merchant_s_Hub
             connection.Close();
             Console.WriteLine("Press any key to go to Root of Database...");
             Console.ReadLine();
-            DisplayProductandServiceManagement();
+            DisplayofRootofDatabase();
         }
         static void deleteCustomerPurchase()
         {
@@ -2237,9 +2236,10 @@ namespace Merchant_s_Hub
             Console.WriteLine("Please choose from the following Options:");
             Console.WriteLine();
             Console.WriteLine(" 1. Modify the Transaction");
-            Console.WriteLine(" 2. Link Transaction to accounts");
-            Console.WriteLine(" 3. View Transaction history");
-            Console.WriteLine(" 4. Go back to Root of Database");
+            Console.WriteLine(" 2. View the Transaction Details.");
+            Console.WriteLine(" 3. Link Transaction to accounts");
+            Console.WriteLine(" 4. View Transaction history");
+            Console.WriteLine(" 5. Go back to Root of Database");
 
             try
             {
@@ -2255,12 +2255,15 @@ namespace Merchant_s_Hub
                         ModifyTransaction();
                         break;
                     case 2:
-                        LinkTransactionsToAccounts();
+                        viewTransactions();
                         break;
                     case 3:
-                        TransactionHistory();
+                        LinkTransactionsToAccounts();
                         break;
                     case 4:
+                        TransactionHistory();
+                        break;
+                    case 5:
                         DisplayofRootofDatabase();
                         break;
                     default:
@@ -2508,7 +2511,7 @@ namespace Merchant_s_Hub
             {
                 Console.WriteLine("Connecting to MySQL...");
                 connection.Open();
-                string selectTransactions = @"SELECT Transaction_Id, Ammount_of_transaction, other_details, Account_ID, Transaction_Types_code, Date_opened FROM transactions;";
+                string selectTransactions = @"SELECT Transaction_Id, Ammount_of_transaction, other_details, Account_ID, Transaction_Types_code, purchase_id, Date_opened FROM transactions;";
                 MySqlCommand command = new MySqlCommand(selectTransactions, connection);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -2519,10 +2522,10 @@ namespace Merchant_s_Hub
                 Console.WriteLine(" *                                          *");
                 Console.WriteLine(" ********************************************\n\n");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Transaction Id \t Ammount \t Other details\t\tAccount ID\tTransaction Type_code\tDate\n");
+                Console.WriteLine("Transaction Id \t Ammount \t Other details\t\tAccount ID\tTransaction Type_code\tpurchase_id\tDate\n");
                 while (reader.Read())
                 {
-                    Console.WriteLine($"\t{reader["Transaction_Id"].ToString().PadRight(7)}\t{reader["Ammount_of_transaction"].ToString().PadRight(10)}\t{reader["other_details"].ToString().PadRight(30)}\t{reader["Account_ID"].ToString().PadRight(10)}\t{reader["Transaction_Types_code"].ToString().PadRight(10)}\t{reader["Date_opened"].ToString().PadRight(10)}\t");
+                    Console.WriteLine($"\t{reader["Transaction_Id"].ToString().PadRight(7)}\t{reader["Ammount_of_transaction"].ToString().PadRight(10)}\t{reader["other_details"].ToString().PadRight(30)}\t{reader["Account_ID"].ToString().PadRight(10)}\t{reader["Transaction_Types_code"].ToString().PadRight(10)}\t{reader["Transaction_Id"].ToString().PadRight(7)}\t{reader["Date_opened"].ToString().PadRight(10)}\t");
                 }
                 reader.Close();
             }
