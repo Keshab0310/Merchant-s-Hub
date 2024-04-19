@@ -8,10 +8,10 @@ namespace Merchant_s_Hub
 {
     internal class Program
     {
-        static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
-        static MySqlConnection connection = new MySqlConnection(connectionString);
-        /*static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
+       /* static string connectionString = "server=localhost;port=3306;user=root;password=031015@Keshab;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
+        static string connectionString = "server=localhost;port=3306;user=root;password=Qwer123@#;database=merchant_hub";
+        static MySqlConnection connection = new MySqlConnection(connectionString);
         /*static string connectionString = "server=127.0.0.1:3306;port=3306;user=root;password=riya8556@;database=merchant_hub";
         static MySqlConnection connection = new MySqlConnection(connectionString);*/
         /*static string connectionString = "server=localhost;port=3306;user=root;password=anmol@2023;database=merchant_hub";
@@ -178,8 +178,8 @@ namespace Merchant_s_Hub
             Console.WriteLine();
             Console.WriteLine("Please choose from the following Options:");
             Console.WriteLine();
-            Console.WriteLine(" 1. Modifying the Costomer");
-            Console.WriteLine(" 2. View Custome Details");
+            Console.WriteLine(" 1. Modifying the Customer");
+            Console.WriteLine(" 2. View Customer Details");
             Console.WriteLine(" 3. View Customer Types");
             Console.WriteLine(" 4. Search for Customers by their types.");
             Console.WriteLine(" 5. Go Back to Root of Database");
