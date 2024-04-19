@@ -1691,14 +1691,14 @@ namespace Merchant_s_Hub
             Console.Write("\n\tEnter the Product and Services Description: ");
             string products_and_services_Description = Console.ReadLine();
 
-            Console.Write("\n\tEnter the Customer ID: ");
-            string customer_id = Console.ReadLine();
+            Console.Write("\n\tEnter the Merchant ID: ");
+            string merchant_id = Console.ReadLine();
 
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string insertQuery = $"Insert into products_and_services (product_and_services_code, products_and_services_Description,customer_id) values ('{product_and_services_code}', '{products_and_services_Description}', '{customer_id}')";
+                    string insertQuery = $"Insert into products_and_services (product_and_services_code, products_and_services_Description,merchant_id) values ('{product_and_services_code}', '{products_and_services_Description}', '{merchant_id}')";
                     MySqlCommand command = new MySqlCommand(insertQuery, connection);
                     connection.Open();
 
