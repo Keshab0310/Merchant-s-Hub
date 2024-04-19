@@ -1816,7 +1816,7 @@ namespace Merchant_s_Hub
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string deleteQuery = $"DELETE FROM customer_purchase WHERE product_and_services_code = '{product_and_services_code}';DELETE FROM products_and_services WHERE Account_ID = '{product_and_services_code}'; ";
+                    string deleteQuery = $"DELETE FROM customer_purchase WHERE product_and_services_code = '{product_and_services_code}';DELETE FROM products_and_services WHERE product_and_services_code = '{product_and_services_code}'; ";
                     MySqlCommand command = new MySqlCommand(deleteQuery, connection);
                     command.Parameters.AddWithValue("@product_and_services_code", product_and_services_code);
 
