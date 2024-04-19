@@ -1458,8 +1458,9 @@ namespace Merchant_s_Hub
 
             }
             connection.Close();
-            Console.WriteLine("\n\nPress any key to continue...");
+            Console.WriteLine("\n\nPress any key to go back to the root of database...");
             Console.ReadLine();
+            DisplayofRootofDatabase();
         }
         static void ChangeAccountType()
         {
